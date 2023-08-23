@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Tendering">
+    <meta name="keywords" content="Tendering, Leilão">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Tendering  </title>
+
+    <!-- Google Font -->
+   <!-- <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">-->
+   
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    
+    <script>
+    $('.click').click(function() {
+	if ($('span').hasClass("fa-heart")) {
+			$('.click').removeClass('active')
+		setTimeout(function() {
+		}, 30)
+		setTimeout(function() {
+			$('span').removeClass('fa-heart')
+			$('span').addClass('fa-heart-o')
+		}, 15)
+	} else {
+		$('.click').addClass('active')
+		setTimeout(function() {
+			$('span').addClass('fa-heart')
+			$('span').removeClass('fa-heart-o')
+		}, 150)
+	}
+})
+    </script>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="#"><img src="img/Tendering.png" alt=""></a>
+        </div>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            </ul>
+            <div class="header__cart__price"> <a href="#"><i class="fa fa-user"></i> Login</a></div>
+        </div>
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+                <img src="img/FLA003 _ brazil.png" alt="">
+                <div>Português</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">Inglês</a></li>
+                    <li><a href="#">Espanhol</a></li>
+                </ul>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="#"><i class="fa fa-user"></i> Login</a>
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li><a href="#">Pesquisas avançadas</a></li>                   
+                <li><a href="#">Ambiente de disputa</a></li>   
+                <li><a href="#">Banco de preços</a></li>   
+                <li><a href="#">Suporte técnico</a></li>   
+                <li><a href="#">Assesssoria financeira</a></li>   
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        
+        
+    </div>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <div class="header__top__right__language">
+                                <img src="img/FLA003 _ brazil.png" alt="">
+                                <div>Português</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">Inglês</a></li>
+                                    <li><a href="#">Espanhol</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">                          
+                            <div class="header__top__right__auth">
+                                <a href="#"><i class="fa fa-user"></i> Login/Registro</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/Tendering.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">                                
+                                <input type="text" placeholder="Procurar no Tendering">
+                                <button type="submit" class="site-btn">pesquisar</button>
+                            </form>
+                        </div>
+                         
+                    </div>
+                  <!-- <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li><a href="./shop-grid.html">Shop</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="./shop-details.html">Shop Details</a></li>
+                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                                    <li><a href="./checkout.html">Check Out</a></li>
+                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./blog.html">Blog</a></li>
+                            <li><a href="./contact.html">Contact</a></li>
+                        </ul>
+                    </nav>--> 
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">                  
+                            <div class="">
+                                <div class="header__top__right__acess">
+                                    <img src="img/icons8-thunder-32.png" width="28px"/>                         
+                                    <div class="navbar-dropdown">Acesso rápido</div>
+                                    <span class="arrow_carrot-down"></span>
+                                    <ul>
+                                        <li class="navbar-item"><a href="#">Cadastramento de fornecedores</a></li>
+                                        <li class="navbar-item"><a href="#">Credencimanento na plataforma</a></li>
+                                        <li class="navbar-item"><a href="#">Requisitos para utilização</a></li>
+                                        <li class="navbar-item"><a href="#">Banco de preços</a></li>
+                                        <li class="navbar-item"><a href="#">Suporte técnico</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>1</span></a></li>
+                            
+                        </ul>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+    <div class="container mt-2">
+        <div class="row">
+            <nav class="header__menu margin_auto">
+                <ul>
+                    <li><a href="#">Pesquisas avançadas</a></li>                   
+                    <li><a href="#">Ambiente de disputa</a></li>   
+                    <li><a href="#">Banco de preços</a></li>   
+                    <li><a href="#">Suporte técnico</a></li>   
+                    <li><a href="#">Assesssoria financeira</a></li>   
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="container mt-1"> 
+    <nav aria-label="breadcrumb  ">
+        <ol class="breadcrumb bg-light">
+          <li class="breadcrumb-item"><a href="#" class="text-green">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Leilão</li>
+        </ol>
+      </nav>
+    </div>
+
+ 
+    
+
+    <!-- Leilao Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-left">
+                        <h3>Leilão</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        <br>  Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo.
+                        </p>                       
+                    </div>                   
+                </div>
+            </div>
+
+            <div class="row featured__filter">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                 <a href="#"> 
+                    <div class="card shadow-sm">
+                        <img class="card-img-top" src="img/bg_2.png" alt="Card image cap">
+                        <div class="card-body pt-1 pb-1">                        
+                            <span class="badge badge-pill badge-warning">Encerra em 2 dias 🔥</span>  
+                            <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                        <div class="float-right"> 
+                            <div class="click ">
+                                <span class="fa fa-heart-o"></span>
+                            </div>
+                            </div>                        
+                        </div>
+                        
+                        <div class="card-body pt-1 pb-1">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <span class="text-muted"> Preço atual</span>
+                            <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                        </div>
+                    </div>
+                 </a>
+                </div>
+                 
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                   <a href="#"> 
+                    <div class="card shadow-sm">
+                      <img class="card-img-top" src="img/alface.png" alt="Card image cap">
+                      <div class="card-body pt-1 pb-1">                        
+                          <span class="badge badge-pill badge-danger"> Leilão encerrado </span>  
+                          <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                         <div class="float-right"> 
+                          <div class="click ">
+                                 <span class="fa fa-heart-o"></span>
+                           </div>
+                          </div>                        
+                      </div>
+                      
+                      <div class="card-body pt-1 pb-1">
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <span class="text-muted"> Preço atual</span>
+                          <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                      </div>
+                    </div>
+                    </a>
+                  </div>
+                
+               
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                   <a href="#"> 
+                    <div class="card shadow-sm">
+                      <img class="card-img-top" src="img/couve.png" alt="Card image cap">
+                      <div class="card-body pt-1 pb-1">                        
+                          <span class="badge badge-pill badge-success"> Leilão Aberto </span>  
+                          <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                         <div class="float-right"> 
+                          <div class="click ">
+                                 <span class="fa fa-heart-o"></span>
+                           </div>
+                          </div>                        
+                      </div>
+                      
+                      <div class="card-body pt-1 pb-1">
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <span class="text-muted"> Preço atual</span>
+                          <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                      </div>
+                      </div>
+                   </a>
+                  </div>
+                 
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a href="#"> 
+                    <div class="card shadow-sm">
+                      <img class="card-img-top" src="img/alface.png" alt="Card image cap">
+                      <div class="card-body pt-1 pb-1">                        
+                          <span class="badge badge-pill badge-danger"> Leilão encerrado </span>  
+                          <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                         <div class="float-right"> 
+                          <div class="click ">
+                                 <span class="fa fa-heart-o"></span>
+                           </div>
+                          </div>                        
+                      </div>
+                      
+                      <div class="card-body pt-1 pb-1">
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <span class="text-muted"> Preço atual</span>
+                          <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                      </div>
+                      </div>
+                      </a>
+                  </div>
+                
+                
+             
+            </div> <!--end row featured__filter -->
+            <div class="row featured__filter mt-2">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm">
+                    <img class="card-img-top" src="img/alface.png" alt="Card image cap">
+                    <div class="card-body pt-1 pb-1">                        
+                        <span class="badge badge-pill badge-danger"> Leilão encerrado </span>  
+                        <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                        <div class="float-right"> 
+                        <div class="click ">
+                                <span class="fa fa-heart-o"></span>
+                        </div>
+                        </div>                        
+                    </div>
+                    
+                    <div class="card-body pt-1 pb-1">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <span class="text-muted"> Preço atual</span>
+                        <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                    </div>
+                    </div>
+                </div>
+            </div> <!--end row featured__filter -->
+        </div>
+    </section>
+    <!-- Leilao Section End -->
+
+   
+     <!-- Mais visitados Section Begin -->
+     <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-left mb-2">
+                        <h4>Mais visitados</h4>
+                         <span class="float-right">
+                            <a href="#" class="text-green "> 
+                                Ver todos
+                            </a>
+                         </span>                     
+                    </div>                   
+                </div>
+            </div>
+
+            <div class="row featured__filter">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="card shadow-sm">
+                    <img class="card-img-top" src="img/bg_2.png" alt="Card image cap">
+                    <div class="card-body pt-1 pb-1">                        
+                        <span class="badge badge-pill badge-warning">Encerra em 2 dias 🔥</span>  
+                        <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                       <div class="float-right"> 
+                        <div class="click ">
+                               <span class="fa fa-heart-o"></span>
+                         </div>
+                        </div>                        
+                    </div>
+                    
+                    <div class="card-body pt-1 pb-1">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <span class="text-muted"> Preço atual</span>
+                        <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                    </div>
+                    </div>
+                </div>
+                 
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm">
+                      <img class="card-img-top" src="img/alface.png" alt="Card image cap">
+                      <div class="card-body pt-1 pb-1">                        
+                          <span class="badge badge-pill badge-danger"> Leilão encerrado </span>  
+                          <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                         <div class="float-right"> 
+                          <div class="click ">
+                                 <span class="fa fa-heart-o"></span>
+                           </div>
+                          </div>                        
+                      </div>
+                      
+                      <div class="card-body pt-1 pb-1">
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <span class="text-muted"> Preço atual</span>
+                          <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                      </div>
+                      </div>
+                  </div>
+                
+               
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm">
+                      <img class="card-img-top" src="img/couve.png" alt="Card image cap">
+                      <div class="card-body pt-1 pb-1">                        
+                          <span class="badge badge-pill badge-success"> Leilão Aberto </span>  
+                          <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                         <div class="float-right"> 
+                          <div class="click ">
+                                 <span class="fa fa-heart-o"></span>
+                           </div>
+                          </div>                        
+                      </div>
+                      
+                      <div class="card-body pt-1 pb-1">
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <span class="text-muted"> Preço atual</span>
+                          <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                      </div>
+                      </div>
+                  </div>
+                 
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm">
+                      <img class="card-img-top" src="img/alface.png" alt="Card image cap">
+                      <div class="card-body pt-1 pb-1">                        
+                          <span class="badge badge-pill badge-danger"> Leilão encerrado </span>  
+                          <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                         <div class="float-right"> 
+                          <div class="click ">
+                                 <span class="fa fa-heart-o"></span>
+                           </div>
+                          </div>                        
+                      </div>
+                      
+                      <div class="card-body pt-1 pb-1">
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <span class="text-muted"> Preço atual</span>
+                          <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                      </div>
+                      </div>
+                  </div>
+                
+             
+            </div> <!--end row featured__filter -->
+            <div class="row featured__filter mt-2">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm">
+                    <img class="card-img-top" src="img/alface.png" alt="Card image cap">
+                    <div class="card-body pt-1 pb-1">                        
+                        <span class="badge badge-pill badge-danger"> Leilão encerrado </span>  
+                        <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                        <div class="float-right"> 
+                        <div class="click ">
+                                <span class="fa fa-heart-o"></span>
+                        </div>
+                        </div>                        
+                    </div>
+                    
+                    <div class="card-body pt-1 pb-1">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <span class="text-muted"> Preço atual</span>
+                        <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                    </div>
+                    </div>
+                </div>
+            </div> <!--end row featured__filter -->
+        </div>
+    </section>
+    <!-- Mais visitados Section End -->
+
+    <!-- Mais ativos Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-left mb-2">
+                        <h4>Mais ativos</h4>
+                        <span class="float-right">
+                            <a href="#" class="text-green "> 
+                                Ver todos
+                            </a>
+                        </span>                     
+                    </div>                   
+                </div>
+            </div>
+
+            <div class="row featured__filter">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card shadow-sm">
+                    <img class="card-img-top" src="img/bg_2.png" alt="Card image cap">
+                    <div class="card-body pt-1 pb-1">                        
+                        <span class="badge badge-pill badge-warning">Encerra em 2 dias 🔥</span>  
+                        <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                    <div class="float-right"> 
+                        <div class="click ">
+                            <span class="fa fa-heart-o"></span>
+                        </div>
+                        </div>                        
+                    </div>
+                    
+                    <div class="card-body pt-1 pb-1">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <span class="text-muted"> Preço atual</span>
+                        <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                    </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm">
+                    <img class="card-img-top" src="img/alface.png" alt="Card image cap">
+                    <div class="card-body pt-1 pb-1">                        
+                        <span class="badge badge-pill badge-danger"> Leilão encerrado </span>  
+                        <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                        <div class="float-right"> 
+                        <div class="click ">
+                                <span class="fa fa-heart-o"></span>
+                        </div>
+                        </div>                        
+                    </div>
+                    
+                    <div class="card-body pt-1 pb-1">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <span class="text-muted"> Preço atual</span>
+                        <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                    </div>
+                    </div>
+                </div>
+                
+            
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm">
+                    <img class="card-img-top" src="img/couve.png" alt="Card image cap">
+                    <div class="card-body pt-1 pb-1">                        
+                        <span class="badge badge-pill badge-success"> Leilão Aberto </span>  
+                        <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                        <div class="float-right"> 
+                        <div class="click ">
+                                <span class="fa fa-heart-o"></span>
+                        </div>
+                        </div>                        
+                    </div>
+                    
+                    <div class="card-body pt-1 pb-1">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <span class="text-muted"> Preço atual</span>
+                        <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                    </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm">
+                      <img class="card-img-top" src="img/alface.png" alt="Card image cap">
+                      <div class="card-body pt-1 pb-1">                        
+                          <span class="badge badge-pill badge-danger"> Leilão encerrado </span>  
+                          <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                         <div class="float-right"> 
+                          <div class="click ">
+                                 <span class="fa fa-heart-o"></span>
+                           </div>
+                          </div>                        
+                      </div>
+                      
+                      <div class="card-body pt-1 pb-1">
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <span class="text-muted"> Preço atual</span>
+                          <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                      </div>
+                      </div>
+                  </div>
+                
+            </div> <!--end row featured__filter -->
+            <div class="row featured__filter mt-2">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm">
+                    <img class="card-img-top" src="img/alface.png" alt="Card image cap">
+                    <div class="card-body pt-1 pb-1">                        
+                        <span class="badge badge-pill badge-danger"> Leilão encerrado </span>  
+                        <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                        <div class="float-right"> 
+                        <div class="click ">
+                                <span class="fa fa-heart-o"></span>
+                        </div>
+                        </div>                        
+                    </div>
+                    
+                    <div class="card-body pt-1 pb-1">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <span class="text-muted"> Preço atual</span>
+                        <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm">
+                    <img class="card-img-top" src="img/alface.png" alt="Card image cap">
+                    <div class="card-body pt-1 pb-1">                        
+                        <span class="badge badge-pill badge-danger"> Leilão encerrado </span>  
+                        <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                        <div class="float-right"> 
+                        <div class="click ">
+                                <span class="fa fa-heart-o"></span>
+                        </div>
+                        </div>                        
+                    </div>
+                    
+                    <div class="card-body pt-1 pb-1">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <span class="text-muted"> Preço atual</span>
+                        <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card shadow-sm">
+                    <img class="card-img-top" src="img/alface.png" alt="Card image cap">
+                    <div class="card-body pt-1 pb-1">                        
+                        <span class="badge badge-pill badge-danger"> Leilão encerrado </span>  
+                        <a href="#" title="Compartilhar" class="text-dark"> <span class="fa fa-share-alt float-right  pl-2"></span> </a>                      
+                        <div class="float-right"> 
+                        <div class="click ">
+                                <span class="fa fa-heart-o"></span>
+                        </div>
+                        </div>                        
+                    </div>
+                    
+                    <div class="card-body pt-1 pb-1">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <span class="text-muted"> Preço atual</span>
+                        <h4 class="text-green font-weight-bold"> R$ 10.500,00</h4>
+                    </div>
+                    </div>
+                </div>
+            </div> <!--end row featured__filter -->
+        </div>
+    </section>
+    <!-- Mais ativos Section End -->
+ 
+
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+            
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Links úteis</h6>
+                        <ul>
+                            <li><a href="#">Sobre o Tendering</a></li>
+                            <li><a href="#">Regulamento Licitatório</a></li>
+                            <li><a href="#">Prêmios Recebidos</a></li>
+                            <li><a href="#">Legislação Tributária</a></li>
+                            <li><a href="#">Ambiente de disputa</a></li>
+                            <li><a href="#">Licitações abertas</a></li>
+                        </ul>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer__widget">
+                        <ul>
+                            <li><a href="#">Política de privacidade</a></li>
+                            <li><a href="#">Termos de uso</a></li>
+                            <li><a href="#">Contatos</a></li>
+                           
+                        </ul>
+                    </div>
+                </div>
+                        
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer__widget">
+                        <div class="footer__about__logo float-right">
+                            <a href="./index.html"><img src="img/fapesb.png" alt=""></a>
+                        </div>
+                         
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text ">
+                            <p>  Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos os direitos reservados.  </p></div>
+                           
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+
+</body>
+
+</html>

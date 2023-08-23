@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ogani | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/iziToast.min.css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/custom-select@1.1.15/build/custom-select.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/js_utils/produtos.js"></script>  
+    <script src="https://adminlte.io/themes/v3/plugins/moment/moment.min.js"></script> 
+    <script src="https://adminlte.io/themes/v3/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/custom-select@1.1.15/build/custom-select.min.js"></script>
+    <script>
+        function abrirPaginaLogin() {
+            window.location.href = "login.html";
+        }
+        $(document).ready(function ()//When the dom is ready or just add it if you already have a .ready function
+        {
+            if (sessionStorage.getItem('tend-compr')) {
+                var dataUser = JSON.parse(window.atob(sessionStorage.getItem('tend-compr')));
+                //web
+                $('#nome-user').text('Bem vindo, ' + dataUser.DS_NOME.split(" ")[0]);
+                $('#showPageLogin').attr("onclick", "").unbind("click");
+                $("#show-icon-menu-user").css("display", "inline");
+                $("#show-menu-user").css("display", "block");
+                //mobile
+                $('#nome-user-mobile').text('Bem vindo, ' + dataUser.DS_NOME.split(" ")[0]);
+                $('#showPageLoginMobile').attr("onclick", "").unbind("click");
+                $("#show-icon-menu-user-mobile").css("display", "inline");
+                $("#show-menu-user-mobile").css("display", "block");
+            } else {
+                $('#nome-user').text('Login');
+                $('#nome-user-mobile').text('Login');
+            }
+            $("#id_cidade").css("width", "100%");
+            $("#id_cidade").css("height", "46px");
+            $("#id_cidade").css("border", "1px solid #ebebeb");
+            //Date picker
+            $('#reservationdate').datetimepicker({
+                format: 'L'
+            });
+            $('#datepicker').datetimepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            //Date and time picker
+            $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+        });
+    </script>
+</head>
+
+<body onload="onloadListaProdutos();onloadCategoria();">
+    <div class="container mt-5">
+        <h1>Datepicker Bootstrap 3</h1>
+        <div class="input-group date">
+          <input type="text" class="form-control" id="datepicker">
+          <span class="input-group-addon">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </span>
+        </div>
+      </div>
+    
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $('#datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+          });
+        });
+      </script>
+</body>
+
+</html>

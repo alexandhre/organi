@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ogani | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/iziToast.min.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        function abrirPaginaLogin() {
+            window.location.href = "login.html";
+        }
+        function abrirPaginaNovoProduto() {
+            window.location.href = "novoProduto.html";
+        }
+        $(document).ready(function ()//When the dom is ready or just add it if you already have a .ready function
+        {
+            if (sessionStorage.getItem('tend-compr')) {
+                var dataUser = JSON.parse(window.atob(sessionStorage.getItem('tend-compr')));
+                //web
+                $('#nome-user').text('Bem vindo, '+ dataUser.DS_NOME.split(" ")[0]);
+                $('#showPageLogin').attr("onclick", "").unbind("click");
+                $("#show-icon-menu-user").css("display", "inline");
+                $("#show-menu-user").css("display", "block");
+                //mobile
+                $('#nome-user-mobile').text('Bem vindo, '+ dataUser.DS_NOME.split(" ")[0]);
+                $('#showPageLoginMobile').attr("onclick", "").unbind("click");
+                $("#show-icon-menu-user-mobile").css("display", "inline");
+                $("#show-menu-user-mobile").css("display", "block");
+            } else {
+                $('#nome-user').text('Login');
+                $('#nome-user-mobile').text('Login');
+            }
+            $(".nice-select").css("width", "100%");
+            $(".nice-select").css("height", "46px");
+        });
+    </script>
+</head>
+
+<body onload="onload()">
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="#"><img src="img/tendering.png" alt=""></a>
+        </div>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+            </ul>
+
+        </div>
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+                <img src="img/brazil.png" alt="">
+                <div>English</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">Português</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </div>
+            <div class="header__top__right__language">
+                <div id="showPageLoginMobile" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
+                    <div id="nome-user-mobile"></div>
+                </div>
+                <span id="show-icon-menu-user-mobile" style="display: none;" class="arrow_carrot-down"></span>
+                <ul id="show-menu-user-mobile" style="display: none;">
+                    <li><a href="perfil.html"><i class="fa fa-user"></i> Meu Perfil</a></li>
+                    <li><a href="compras.html"><i class="fa fa-user"></i> Minhas Compras</a></li>
+                    <li><a href="lances.html"><i class="fa fa-user"></i> Meus Lances</a></li>
+                    <li><a href="favoritos.html"><i class="fa fa-user"></i> Meus Favoritos</a></li>
+                    <li><a href="meusprodutos.html"><i class="fa fa-user"></i> Meus Produtos</a></li>
+                    <li><a href="#" onclick="logout()"><i class="fa fa-sign-out"></i> Sair</a></li>
+                </ul>
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li class="active"><a href="./index.html">Home</a></li>
+                <li><a href="#">Produtos</a>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="./shop-grid.html">Prateleira de Produtos</a></li>
+                        <li><a href="./shoping-cart.html">Carrinho de Compras</a></li>
+                    </ul>                   
+                </li>
+                <li><a href="#">Acesso Rápido</a>
+                    <ul class="header__menu__dropdown">                        
+                        <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
+                        <li><a href="./checkout.html">Credenciamento na Plataforma</a></li>
+                        <li><a href="./checkout.html">Requisitos para Utilização</a></li>
+                        <li><a href="./checkout.html">Suporte Técnico</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="./contact.html">Contato</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-envelope"></i> hello@tendering.com</li>
+
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> hello@tendering.com</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+                            <div class="header__top__right__language">
+                                <img src="img/brazil.png" alt="">
+                                <div>English</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">Português</a></li>
+                                    <li><a href="#">English</a></li>
+                                </ul>
+                            </div>
+                            <div class="header__top__right__language">
+                                <div id="showPageLogin" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
+                                    <div id="nome-user"></div>
+                                </div>
+                                <span id="show-icon-menu-user" style="display: none;" class="arrow_carrot-down"></span>
+                                <ul id="show-menu-user" style="display: none; width:200px;">
+                                    <li><a href="perfil.html"><i class="fa fa-user"></i> Meu Perfil</a></li>
+                                    <li><a href="compras.html"><i class="fa fa-user"></i> Minhas Compras</a></li>
+                                    <li><a href="lances.html"><i class="fa fa-user"></i> Meus Lances</a></li>
+                                    <li><a href="favoritos.html"><i class="fa fa-user"></i> Meus Favoritos</a></li>
+                                    <li><a href="meusprodutos.html"><i class="fa fa-user"></i> Meus Produtos</a></li>
+                                    <li><a href="#" onclick="logout()"><i class="fa fa-sign-out"></i> Sair</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/tendering.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li><a href="#">Produtos</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="./shop-grid.html">Prateleira de Produtos</a></li>
+                                    <li><a href="./shoping-cart.html">Carrinho de Compras</a></li>
+                                </ul>                   
+                            </li>
+                            <li><a href="#">Acesso Rápido</a>
+                                <ul class="header__menu__dropdown">                        
+                                    <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
+                                    <li><a href="./checkout.html">Requisitos para Utilização</a></li>
+                                    <li><a href="./checkout.html">Suporte Técnico</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="./contact.html">Contato</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li><a href="favoritos.html"><i class="fa fa-heart"></i> <span id="heart-number"></span></a></li>
+                            <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span id="cart-number"></span></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span>Categorias</span>
+                        </div>
+                        <ul id="menuLateralCategoria">
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="hero__search">
+                        <div class="hero__search__form">
+                            <form action="#">
+
+                                <input type="text" placeholder="O que você precisa?">
+                                <button type="submit" class="site-btn">Pesquisar</button>
+                            </form>
+                        </div>
+                        <div class="hero__search__phone">
+                            <button type="button" onclick="abrirPaginaNovoProduto()" class="site-btn">Subir Anúncio</button>
+                        </div>
+                    </div>
+                    <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
+                        <div class="hero__text">
+                            <span>Produtos Frescos</span>
+                            <h2>Produtos <br />100% Organicos</h2>
+                            <p>Recolha e entrega gratuitas disponíveis</p>
+                            <a href="shop-grid.html" class="primary-btn">Produtos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Categories Section Begin -->
+    <section class="categories">
+        <div class="container">
+            <div class="row">
+                <div class="categories__slider owl-carousel" id="carouselCategoria"> 
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Produtos em Destaque</h2>
+                    </div>
+                    <div class="featured__controls">
+                        <ul id="produtosDestaqueCategoria">
+                            <li class="active" data-filter="*">Todos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row featured__filter" id="listProduto">
+            </div>
+        </div>
+    </section>
+    <!-- Featured Section End -->
+
+    <!-- Banner Begin -->
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="img/banner/banner-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="banner__pic">
+                        <img src="img/banner/banner-2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner End -->
+
+    <!-- Latest Product Section Begin -->
+    <section class="latest-product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Produtos mais recentes</h4>
+                        <div class="recente-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item" id="listRecentes1">
+                            </div>
+                            <div class="latest-prdouct__slider__item" id="listRecentes2">
+                            </div>
+                            <div class="latest-prdouct__slider__item" id="listRecentes3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="latest-product__text">
+                        <h4>Promoções da Semana</h4>
+                        <div class="latest-product__slider owl-carousel">
+                            <div class="latest-prdouct__slider__item" id="listPromocao1">
+                            </div>
+                            <div class="latest-prdouct__slider__item" id="listPromocao2">
+                            </div>
+                            <div class="latest-prdouct__slider__item" id="listPromocao3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Latest Product Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <a href="./index.html"><img src="img/tendering.png" alt=""></a>
+                        </div>
+                        <ul>
+                            <li>Address: 60-49 Road 11378 New York</li>
+                            <li>Phone: +65 11.188.888</li>
+                            <li>Email: hello@tendering.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+                    <div class="footer__widget">
+                        <h6>Useful Links</h6>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">About Our Shop</a></li>
+                            <li><a href="#">Secure Shopping</a></li>
+                            <li><a href="#">Delivery infomation</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Our Sitemap</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">Who We Are</a></li>
+                            <li><a href="#">Our Services</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Innovation</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer__widget">
+                        <h6>Join Our Newsletter Now</h6>
+                        <p>Get E-mail updates about our latest shop and special offers.</p>
+                        <form action="#">
+                            <input type="text" placeholder="Enter your mail">
+                            <button type="submit" class="site-btn">Subscribe</button>
+                        </form>
+                        <div class="footer__widget__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text">
+                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This
+                                template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+                                    href="https://colorlib.com" target="_blank">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/js_utils/index.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/js_utils/usuario.js"></script>
+    <script src="js/js_utils/utils.js"></script>
+    <script src="js/js_utils/iziToast.min.js"></script>
+    <script src="js/js_utils/controler.js"></script>
+</body>
+
+</html>
