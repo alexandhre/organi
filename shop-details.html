@@ -35,12 +35,12 @@
             if (sessionStorage.getItem('tend-compr')) {
                 var dataUser = JSON.parse(window.atob(sessionStorage.getItem('tend-compr')));
                 //web
-                $('#nome-user').text('Bem vindo, '+ dataUser.DS_NOME.split(" ")[0]);
+                $('#nome-user').text('Bem vindo, ' + dataUser.DS_NOME.split(" ")[0]);
                 $('#showPageLogin').attr("onclick", "").unbind("click");
                 $("#show-icon-menu-user").css("display", "inline");
                 $("#show-menu-user").css("display", "block");
                 //mobile
-                $('#nome-user-mobile').text('Bem vindo, '+ dataUser.DS_NOME.split(" ")[0]);
+                $('#nome-user-mobile').text('Bem vindo, ' + dataUser.DS_NOME.split(" ")[0]);
                 $('#showPageLoginMobile').attr("onclick", "").unbind("click");
                 $("#show-icon-menu-user-mobile").css("display", "inline");
                 $("#show-menu-user-mobile").css("display", "block");
@@ -68,10 +68,9 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="favoritos.html"><i class="fa fa-heart"></i> <span
-                    id="heart-number-mobile"></span></a></li>
+                <li><a href="favoritos.html"><i class="fa fa-heart"></i> <span id="heart-number-mobile"></span></a></li>
                 <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span
-                    id="cart-number-mobile"></span></a></li>
+                            id="cart-number-mobile"></span></a></li>
             </ul>
         </div>
         <div class="humberger__menu__widget">
@@ -105,10 +104,11 @@
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-grid.html">Prateleira de Produtos</a></li>
                         <li><a href="./shoping-cart.html">Carrinho de Compras</a></li>
-                    </ul>                   
+                    </ul>
                 </li>
                 <li><a href="#">Acesso Rápido</a>
-                    <ul class="header__menu__dropdown">                        
+                    <ul class="header__menu__dropdown">
+                        <li><a href="./licitacoes.html">Licitações</a></li>
                         <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
                         <li><a href="./checkout.html">Credenciamento na Plataforma</a></li>
                         <li><a href="./checkout.html">Requisitos para Utilização</a></li>
@@ -198,11 +198,13 @@
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-grid.html">Prateleira de Produtos</a></li>
                                     <li><a href="./shoping-cart.html">Carrinho de Compras</a></li>
-                                </ul>                   
+                                </ul>
                             </li>
                             <li><a href="#">Acesso Rápido</a>
-                                <ul class="header__menu__dropdown">                        
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="./licitacoes.html">Licitações</a></li>
                                     <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
+                                    <li><a href="./checkout.html">Credenciamento na Plataforma</a></li>
                                     <li><a href="./checkout.html">Requisitos para Utilização</a></li>
                                     <li><a href="./checkout.html">Suporte Técnico</a></li>
                                 </ul>
@@ -215,10 +217,10 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="favoritos.html"><i class="fa fa-heart"></i> <span
-                                id="heart-number"></span></a></li>
+                            <li><a href="favoritos.html"><i class="fa fa-heart"></i> <span id="heart-number"></span></a>
+                            </li>
                             <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span
-                                id="cart-number"></span></a></li>
+                                        id="cart-number"></span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -247,14 +249,14 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
-
+                            <form>
                                 <input type="text" placeholder="O que você precisa?">
-                                <button type="submit" class="site-btn">Pesquisar</button>
+                                <button  onclick="window.location.href='shop-grid.html';" type="button" class="site-btn">Pesquisar</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
-                            <button type="button" onclick="abrirPaginaNovoProduto()" class="site-btn">Subir Anúncio</button>
+                            <button type="button" onclick="abrirPaginaNovoProduto()" class="site-btn">Subir
+                                Anúncio</button>
                         </div>
                     </div>
                 </div>
@@ -292,30 +294,38 @@
                             <img id="imagem_principal" class="product__details__pic__item--large" alt="">
                         </div>
                         <div id="imagens_secundarias" class="product__details__pic__slider owl-carousel">
-                            <div style="display: none;" id="bigimg1" class="pt" data-imgbigurl="img/product/details/product-details-1.jpg">
+                            <div style="display: none;" id="bigimg1" class="pt"
+                                data-imgbigurl="img/product/details/product-details-1.jpg">
                                 <img id="img1" src="img/product/details/thumb-1.jpg" alt="" />
                             </div>
-                            <div style="display: none;" id="bigimg2" class="pt" data-imgbigurl="img/product/details/product-details-2.jpg">
+                            <div style="display: none;" id="bigimg2" class="pt"
+                                data-imgbigurl="img/product/details/product-details-2.jpg">
                                 <img id="img2" src="img/product/details/thumb-2.jpg" alt="" />
                             </div>
-                            <div style="display: none;" id="bigimg3" class="pt" data-imgbigurl="img/product/details/product-details-2.jpg">
+                            <div style="display: none;" id="bigimg3" class="pt"
+                                data-imgbigurl="img/product/details/product-details-2.jpg">
                                 <img id="img3" src="img/product/details/thumb-2.jpg" alt="" />
                             </div>
-                            <div style="display: none;" id="bigimg4" class="pt" data-imgbigurl="img/product/details/product-details-2.jpg">
+                            <div style="display: none;" id="bigimg4" class="pt"
+                                data-imgbigurl="img/product/details/product-details-2.jpg">
                                 <img id="img4" src="img/product/details/thumb-2.jpg" alt="" />
                             </div>
-                            <div style="display: none;" id="bigimg5" class="pt" data-imgbigurl="img/product/details/product-details-2.jpg">
+                            <div style="display: none;" id="bigimg5" class="pt"
+                                data-imgbigurl="img/product/details/product-details-2.jpg">
                                 <img id="img5" src="img/product/details/thumb-2.jpg" alt="" />
                             </div>
-                            <div style="display: none;" id="bigimg6" class="pt" data-imgbigurl="img/product/details/product-details-2.jpg">
+                            <div style="display: none;" id="bigimg6" class="pt"
+                                data-imgbigurl="img/product/details/product-details-2.jpg">
                                 <img id="img6" src="img/product/details/thumb-2.jpg" alt="" />
                             </div>
-                            <div style="display: none;" id="bigimg7" class="pt" data-imgbigurl="img/product/details/product-details-2.jpg">
+                            <div style="display: none;" id="bigimg7" class="pt"
+                                data-imgbigurl="img/product/details/product-details-2.jpg">
                                 <img id="img7" src="img/product/details/thumb-2.jpg" alt="" />
                             </div>
-                            <div style="display: none;" id="bigimg8" class="pt" data-imgbigurl="img/product/details/product-details-2.jpg">
+                            <div style="display: none;" id="bigimg8" class="pt"
+                                data-imgbigurl="img/product/details/product-details-2.jpg">
                                 <img id="img8" src="img/product/details/thumb-2.jpg" alt="" />
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -330,9 +340,11 @@
                             <i class="fa fa-star-half-o"></i>
                         </div> -->
                         <div class="product__details__price">
-                            R$<span id="vl_produto"></span>                                                        
-                            <span id="label_produto_antigo" style="display:none;font-size: 45%;font-weight: 100;color: black;"> De:</span>
-                            <span id="vl_produto_antigo" style="display:none;font-size: 45%;font-weight: 100;text-decoration: line-through;color: black;"></span>                            
+                            R$<span id="vl_produto"></span>
+                            <span id="label_produto_antigo"
+                                style="display:none;font-size: 45%;font-weight: 100;color: black;"> De:</span>
+                            <span id="vl_produto_antigo"
+                                style="display:none;font-size: 45%;font-weight: 100;text-decoration: line-through;color: black;"></span>
                         </div>
                         <p id="desc_produto"></p>
                         <!-- <div class="product__details__quantity">
@@ -343,7 +355,8 @@
                             </div>
                         </div> -->
                         <a id="cart_btn" style="cursor: pointer;color: white;" class="primary-btn">ADD ao Carrinho</a>
-                        <a id="heart_btn" style="cursor: pointer;" class="heart-icon"><span id="heart_icon" class="icon_heart_alt"></span></a>
+                        <a id="heart_btn" style="cursor: pointer;" class="heart-icon"><span id="heart_icon"
+                                class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>Disponibilidade</b> <span id="estoque"></span></li>
                             <!-- <li><b>Envio</b> <span>01 dia de envio. <samp>Retirada grátis hoje</samp></span></li> -->
@@ -373,30 +386,30 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <div class="product__details__tab__desc">                                    
+                                <div class="product__details__tab__desc">
                                     <p id="desc_produto2"></p>
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__tab__desc">                                    
+                                <div class="product__details__tab__desc">
                                     <div class="shoping__cart__table">
                                         <table>
                                             <thead>
                                                 <tr>
-                                                <th>Quantidade Disponível</th>
-                                                <th>Quantidade Minima do Pedido</th>
-                                                <th>Altura</th>
-                                                <th>Largura</th>
-                                                <th>Comprimento</th>
-                                                <th>Quantidade de Itens no Pacote</th>
+                                                    <th>Quantidade Disponível</th>
+                                                    <th>Quantidade Minima do Pedido</th>
+                                                    <th>Altura</th>
+                                                    <th>Largura</th>
+                                                    <th>Comprimento</th>
+                                                    <th>Quantidade de Itens no Pacote</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="info_produto">                                            
+                                            <tbody id="info_produto">
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                            </div>                           
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -415,7 +428,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" id="anuncios_semelhates">                                                          
+            <div class="row" id="anuncios_semelhates">
             </div>
         </div>
     </section>
@@ -504,7 +517,7 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/js_utils/categorias.js"></script>  
+    <script src="js/js_utils/categorias.js"></script>
     <script src="js/js_utils/detalheProduto.js"></script>
     <script src="js/js_utils/iziToast.min.js"></script>
     <script src="js/js_utils/controler.js"></script>

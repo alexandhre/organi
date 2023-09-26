@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/iziToast.min.css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">    
+    <link rel="stylesheet" href="css/style.css" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/custom-select@1.1.15/build/custom-select.min.css" rel="stylesheet">
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/js_utils/perfil.js"></script>
@@ -83,10 +83,9 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="favoritos.html"><i class="fa fa-heart"></i> <span
-                    id="heart-number-mobile"></span></a></li>
+                <li><a href="favoritos.html"><i class="fa fa-heart"></i> <span id="heart-number-mobile"></span></a></li>
                 <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span
-                    id="cart-number-mobile"></span></a></li>
+                            id="cart-number-mobile"></span></a></li>
             </ul>
 
         </div>
@@ -122,10 +121,11 @@
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-grid.html">Prateleira de Produtos</a></li>
                         <li><a href="./shoping-cart.html">Carrinho de Compras</a></li>
-                    </ul>                   
+                    </ul>
                 </li>
                 <li><a href="#">Acesso Rápido</a>
-                    <ul class="header__menu__dropdown">                        
+                    <ul class="header__menu__dropdown">
+                        <li><a href="./licitacoes.html">Licitações</a></li>
                         <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
                         <li><a href="./checkout.html">Credenciamento na Plataforma</a></li>
                         <li><a href="./checkout.html">Requisitos para Utilização</a></li>
@@ -188,7 +188,8 @@
                                 </div>
                                 <span id="show-icon-menu-user-mobile" class="arrow_carrot-down"></span>
                                 <ul id="show-menu-user-mobile" style="display: none; width:200px;">
-                                    <li class="active"><a href="perfil.html"><i class="fa fa-user"></i> Meu Perfil</a></li>
+                                    <li class="active"><a href="perfil.html"><i class="fa fa-user"></i> Meu Perfil</a>
+                                    </li>
                                     <li><a href="compras.html"><i class="fa fa-user"></i> Minhas Compras</a></li>
                                     <li><a href="lances.html"><i class="fa fa-user"></i> Meus Lances</a></li>
                                     <li><a href="favoritos.html"><i class="fa fa-user"></i> Meus Favoritos</a></li>
@@ -216,11 +217,13 @@
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./shop-grid.html">Prateleira de Produtos</a></li>
                                     <li><a href="./shoping-cart.html">Carrinho de Compras</a></li>
-                                </ul>                   
+                                </ul>
                             </li>
                             <li><a href="#">Acesso Rápido</a>
-                                <ul class="header__menu__dropdown">                        
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="./licitacoes.html">Licitações</a></li>
                                     <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
+                                    <li><a href="./checkout.html">Credenciamento na Plataforma</a></li>
                                     <li><a href="./checkout.html">Requisitos para Utilização</a></li>
                                     <li><a href="./checkout.html">Suporte Técnico</a></li>
                                 </ul>
@@ -233,10 +236,10 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="favoritos.html"><i class="fa fa-heart"></i> <span
-                                id="heart-number"></span></a></li>
+                            <li><a href="favoritos.html"><i class="fa fa-heart"></i> <span id="heart-number"></span></a>
+                            </li>
                             <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span
-                                id="cart-number"></span></a></li>
+                                        id="cart-number"></span></a></li>
                         </ul>
 
                     </div>
@@ -266,14 +269,14 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
-
+                            <form>
                                 <input type="text" placeholder="O que você precisa?">
-                                <button type="submit" class="site-btn">Pesquisar</button>
+                                <button  onclick="window.location.href='shop-grid.html';" type="button" class="site-btn">Pesquisar</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
-                            <button type="button" onclick="abrirPaginaNovoProduto()" class="site-btn">Subir Anúncio</button>
+                            <button type="button" onclick="abrirPaginaNovoProduto()" class="site-btn">Subir
+                                Anúncio</button>
                         </div>
                     </div>
                 </div>
@@ -392,7 +395,10 @@
                                 </div>
                             </div>
                         </div>
-                        <button id="btn-perfil" onclick="atualizarComprador();" type="button" class="site-btn"><div id="spinner" style="display: none;" class="spinner is-animating"></div><span id="span-perfil">Atualizar</span></button>                        
+                        <button id="btn-perfil" onclick="atualizarComprador();" type="button" class="site-btn">
+                            <div id="spinner" style="display: none;" class="spinner is-animating"></div><span
+                                id="span-perfil">Atualizar</span>
+                        </button>
                     </div>
                 </div>
                 </form>
@@ -475,7 +481,7 @@
     </footer>
     <!-- Footer Section End -->
 
-    <!-- Js Plugins -->    
+    <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery.mask.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

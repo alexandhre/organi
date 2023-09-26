@@ -169,7 +169,7 @@ function deletarProduto() {
         var dataUser = JSON.parse(window.atob(sessionStorage.getItem('tend-compr')));
         ID_COMPRADOR = dataUser.ID_COMPRADOR;
     }
-    myFormData.append('ID_COMPRADOR', ID_COMPRADOR);
+    myFormData.append('idComprador', ID_COMPRADOR);
 
     var idAnuncioProduto = 0;
     if (sessionStorage.getItem('idAnuncio')) {
@@ -658,6 +658,11 @@ function cadastrarDadosAdicionais() {
     if (sessionStorage.getItem('idAnuncioNovo')) {
         idAnuncioNovo = sessionStorage.getItem('idAnuncioNovo');
     }
+    var id_comprador = 0;
+    if (sessionStorage.getItem('tend-compr')) {
+        var dataUser = JSON.parse(window.atob(sessionStorage.getItem('tend-compr')));
+        id_comprador = dataUser.ID_COMPRADOR;
+    }
     $('#span-preco').text("");
     $('#spinner-preco').css('display', 'block');
     $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content') } });
@@ -667,6 +672,7 @@ function cadastrarDadosAdicionais() {
         dataType: "json",
         data: {
             "idAnuncioNovo": idAnuncioNovo,
+            "idComprador": id_comprador,
             "vl_unitario": $("#vl_unitario").val(),
             "desconto": $("#desconto").val(),
             "altura_pacote": $("#altura_pacote").val(),
@@ -771,6 +777,14 @@ function setPreviewImage(inputFile, qtd_images, fieldImgSrc, fieldPreview) {
 }
 
 function salvarArquivo(inputfiles, tipoOperacao) {
+    var id_comprador = 0;
+    if (sessionStorage.getItem('tend-compr')) {
+        var dataUser = JSON.parse(window.atob(sessionStorage.getItem('tend-compr')));
+        id_comprador = dataUser.ID_COMPRADOR;
+    }
+    var myFormData = new FormData();
+    myFormData.append('idComprador', id_comprador);
+                    
     //jogar isso num metodo e utilizar o padrão fail first
     if(tipoOperacao == 'anuncio'){
         for (var i = 0; i < inputfiles.length; i++) {
@@ -778,7 +792,7 @@ function salvarArquivo(inputfiles, tipoOperacao) {
                 || inputfiles[i].type.match('image/jpg')
                 || inputfiles[i].type.match('image/jpeg')
             ) {
-                var myFormData = new FormData();
+                
                 files = Object.values(inputfiles);
                 files.forEach(function (file) {
                     myFormData.append('myFiles[]', file);
@@ -793,14 +807,13 @@ function salvarArquivo(inputfiles, tipoOperacao) {
             if (inputfiles[i].type.match('application/pdf')
                 || inputfiles[i].type.match('application/msword')
                 || inputfiles[i].type.match('application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-            ) {
-                var myFormData = new FormData();
+            ) {                
                 files = Object.values(inputfiles);
                 files.forEach(function (file) {
                     myFormData.append('myFiles[]', file);
                 });
             } else {
-                error('Tipo de arquivo não suportado, apenas imagens do tipo PNG, JPG e JPEG são aceitas!');
+                error('Tipo de arquivo não suportado, apenas arquivos do tipo PDF e word são aceitos!');
                 return false;
             }
         }
@@ -838,6 +851,11 @@ function salvarArquivo(inputfiles, tipoOperacao) {
 }
 
 function cadastrarFotosAnuncio(){
+    var id_comprador = 0;
+    if (sessionStorage.getItem('tend-compr')) {
+        var dataUser = JSON.parse(window.atob(sessionStorage.getItem('tend-compr')));
+        id_comprador = dataUser.ID_COMPRADOR;
+    }
     var idAnuncioNovo = 0;
     if (sessionStorage.getItem('idAnuncioNovo')) {
         idAnuncioNovo = sessionStorage.getItem('idAnuncioNovo');
@@ -862,6 +880,7 @@ function cadastrarFotosAnuncio(){
         dataType: "json",
         data: {
             "idAnuncioNovo": idAnuncioNovo,
+            'idComprador': id_comprador,
             "uploading_files_anuncio": uploading_files_anuncio ,
             "uploading_files_anexo": uploading_files_anexo            
         },
@@ -1005,7 +1024,7 @@ function cadastrarDadosLeilao() {
         dataType: "json",
         data: {
             "idAnuncioNovo": idAnuncioNovo,
-            "id_comprador": id_comprador,
+            "idComprador": id_comprador,
             "loja": $("#loja").val(),   
             "vendedor": $("#vendedor").val(),   
             "identificacao": $("#identificacao").val(),   

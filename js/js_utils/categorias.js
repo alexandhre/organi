@@ -35,10 +35,12 @@ function carregarCategorias(tela = '') {
             } else {
                 //posteriormente implementar JWT 
                 var categoriasOrdenadas = data.response.sucesso.message.categorias.sort((a, b) => a.DS_CATEGORIA_PRODUTO > b.DS_CATEGORIA_PRODUTO ? 1 : -1);
+                appendCategoriasPrateleira('#menuLateralCategoriaGrid', categoriasOrdenadas);
+                appendCategoriaMenuLateral('#menuLateralCategoria', categoriasOrdenadas);
                 if(tela == 'produtosGrid'){
-                    appendCategoriasPrateleira('#menuLateralCategoria', categoriasOrdenadas);
+                    
                 } else {
-                    appendCategoriaMenuLateral('#menuLateralCategoria', categoriasOrdenadas);                
+                                    
                 }               
             }
 

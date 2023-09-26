@@ -283,6 +283,7 @@ function pesquisarProdutos() {
                 $('#spinner-produto').css('display', 'none');
                 $("#lista_produtos_anuncios").empty();
                 appendProdutoAnuncio('#lista_produtos_anuncios', data.response.sucesso.message.produtos, 'pesquisa');
+                appendPagination('#pagination', data.response.sucesso.message.pagination, 1);
                 //location.reload();
             }
         },

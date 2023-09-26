@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/iziToast.min.css">
     <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/js_utils/produtos.js"></script>
     <script>
         function abrirPaginaLogin() {
             window.location.href = "login.html";
@@ -51,21 +50,11 @@
             }
             $(".nice-select").css("width", "100%");
             $(".nice-select").css("height", "46px");
-
-            if (localStorage.getItem('cart-number') && localStorage.getItem('heart-number')) {
-                var cart_number = localStorage.getItem('cart-number');
-                var heart_number = localStorage.getItem('heart-number');
-                $("#heart-number").text(cart_number);
-                $("#cart-number").text(heart_number);
-            } else {
-                $("#heart-number").text(0);
-                $("#cart-number").text(0);
-            }
         });
     </script>
 </head>
 
-<body onload="indexProdutos();onloadCategoria();">
+<body onload="onloadCategoria('produtosGrid');indexLicitacao();">
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -81,10 +70,8 @@
             <ul>
                 <li><a href="favoritos.html"><i class="fa fa-heart"></i> <span id="heart-number-mobile"></span></a></li>
                 <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span
-                            id="cart-number-mobile"></span></a>
-                </li>
+                            id="cart-number-mobile>"></span></a></li>
             </ul>
-
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
@@ -97,16 +84,16 @@
                 </ul>
             </div>
             <div class="header__top__right__language">
-                <div id="showPageLogin" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
-                    <div id="nome-user"></div>
+                <div id="showPageLoginMobile" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
+                    <div id="nome-user-mobile"></div>
                 </div>
-                <span id="show-icon-menu-user" class="arrow_carrot-down"></span>
-                <ul id="show-menu-user" style="display: none; width:200px;">
+                <span id="show-icon-menu-user-mobile" style="display: none;" class="arrow_carrot-down"></span>
+                <ul id="show-menu-user-mobile" style="display: none;">
                     <li><a href="perfil.html"><i class="fa fa-user"></i> Meu Perfil</a></li>
                     <li><a href="compras.html"><i class="fa fa-user"></i> Minhas Compras</a></li>
                     <li><a href="lances.html"><i class="fa fa-user"></i> Meus Lances</a></li>
                     <li><a href="favoritos.html"><i class="fa fa-user"></i> Meus Favoritos</a></li>
-                    <li class="active"><a href="meusprodutos.html"><i class="fa fa-user"></i> Meus Produtos</a></li>
+                    <li><a href="meusprodutos.html"><i class="fa fa-user"></i> Meus Produtos</a></li>
                     <li><a href="#" onclick="logout()"><i class="fa fa-sign-out"></i> Sair</a></li>
                 </ul>
             </div>
@@ -120,7 +107,7 @@
                         <li><a href="./shoping-cart.html">Carrinho de Compras</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Acesso Rápido</a>
+                <li class="active"><a href="#">Acesso Rápido</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./licitacoes.html">Licitações</a></li>
                         <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
@@ -180,17 +167,16 @@
                                 </ul>
                             </div>
                             <div class="header__top__right__language">
-                                <div id="showPageLoginMobile" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
-                                    <div id="nome-user-mobile"></div>
+                                <div id="showPageLogin" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
+                                    <div id="nome-user"></div>
                                 </div>
-                                <span id="show-icon-menu-user-mobile" class="arrow_carrot-down"></span>
-                                <ul id="show-menu-user-mobile" style="display: none; width:200px;">
+                                <span id="show-icon-menu-user" style="display: none;" class="arrow_carrot-down"></span>
+                                <ul id="show-menu-user" style="display: none; width:200px;">
                                     <li><a href="perfil.html"><i class="fa fa-user"></i> Meu Perfil</a></li>
                                     <li><a href="compras.html"><i class="fa fa-user"></i> Minhas Compras</a></li>
                                     <li><a href="lances.html"><i class="fa fa-user"></i> Meus Lances</a></li>
                                     <li><a href="favoritos.html"><i class="fa fa-user"></i> Meus Favoritos</a></li>
-                                    <li class="active"><a href="meusprodutos.html"><i class="fa fa-user"></i> Meus
-                                            Produtos</a></li>
+                                    <li><a href="meusprodutos.html"><i class="fa fa-user"></i> Meus Produtos</a></li>
                                     <li><a href="#" onclick="logout()"><i class="fa fa-sign-out"></i> Sair</a></li>
                                 </ul>
                             </div>
@@ -216,7 +202,7 @@
                                     <li><a href="./shoping-cart.html">Carrinho de Compras</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Acesso Rápido</a>
+                            <li class="active"><a href="#">Acesso Rápido</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./licitacoes.html">Licitações</a></li>
                                     <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
@@ -225,7 +211,6 @@
                                     <li><a href="./checkout.html">Suporte Técnico</a></li>
                                 </ul>
                             </li>
-
                             <li><a href="./contact.html">Contato</a></li>
                         </ul>
                     </nav>
@@ -272,8 +257,10 @@
                             </form>
                         </div>
                         <div class="hero__search__phone">
-                            <button type="button" onclick="abrirPaginaNovoProduto()" class="site-btn">Subir
-                                Anúncio</button>
+                            <div class="hero__search__phone__text">
+                                <button type="button" onclick="abrirPaginaNovoProduto()" class="site-btn">Subir
+                                    Anúncio</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -288,10 +275,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Meus Produtos</h2>
+                        <h2>Licitações</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.html">Home</a>
-                            <span>Meus Produtos</span>
+                            <span>Acesso Rápido</span>
                         </div>
                     </div>
                 </div>
@@ -300,47 +287,216 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- Shoping Cart Section Begin -->
-    <section class="shoping-cart spad" style="padding-top: 20px;padding-bottom: 30px;">
+    <!-- Product Section Begin -->
+    <section class="product spad">
         <div class="container">
             <div class="row">
-                <div class="product__discount" style="padding-bottom: 0px;">
-                    <div class="section-title product__discount__title" style="margin-bottom: 0px;">
-                        <h2>Leilão</span></h2>
+                <div class="col-lg-3 col-md-5">
+                    <div class="sidebar">
+                        <div class="sidebar__item">
+                            <h4>Situação da licitação </h4>
+                            <ul>
+                                <div class="checkout__input__checkbox">
+                                    <label for="aberta">Abertas<input type="checkbox" id="aberta">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="anulada">Anuladas<input type="checkbox" id="anulada">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="disputa">Em disputa<input type="checkbox" id="disputa">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="fechada">Fechadas<input type="checkbox" id="fechada">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="homologada">Homologadas<input type="checkbox" id="homologada">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="publicada">Publicadas<input type="checkbox" id="publicada">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="revogada">Revogadas<input type="checkbox" id="revogada">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>                                
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-12 col-md-7">
-                    <div class="row" id="lista_produtos_leilao">
+                <div class="col-lg-9 col-md-7">
+                    <div class="row">
+                        <div class="card-body">
+                            <div class="col-lg-12 float-right">                                                             
+                                <div class="float-left pr-2">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="product__discount" style="padding-bottom: 0px;">
+                                                <div class="section-title product__discount__title" style="margin-bottom: 30px;">
+                                                    <h2>Filtros</h2>
+                                                </div>                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="float-right" style="padding-top: 10px;">
+                                    <button onclick="window.location.href='criarLicitacao.html'" type="button" class="site-btn">Criar Licitação</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="leilao__pagination" class="product__pagination"
-                        style="padding-top: 50px;text-align: center;">
+                  
+                    <div class="row">
+                        <div class="card-body">
+                            <div class="col-lg-12 float-right">                              
+                                <div class="float-left pr-2">
+                                    <div class="row">
+                                        <div class="col-lg-12" style="padding-right: 80px;">
+                                            <div class="checkout__input">
+                                                <p>Abrangência da disputa</p>
+                                                <select name="abrangencia" id="abrangencia" class="form-control">
+                                                    <option value="0" selected>Selecione</option>
+                                                    <option value="1">Nacional</option>
+                                                    <option value="2">Regional</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="float-left pr-2">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="checkout__input">
+                                                <p>Período</p>
+                                                <select name="abrangencia" id="abrangencia" class="form-control">
+                                                    <option value="0" selected>Selecione</option>
+                                                    <option value="1">Hoje</option>
+                                                    <option value="2">Últimos 3 dias</option>
+                                                    <option value="3">Últimos 7 dias</option>
+                                                    <option value="4">Últimos 15 dias</option>
+                                                    <option value="5">Últimos 30 dias</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="float-right" style="padding-top: 45px;">
+                                    <button type="button" class="site-btn">Aplicar filtros</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Shoping Cart Section End -->
 
-    <!-- Shoping Cart Section Begin -->
-    <section class="shoping-cart spad" style="padding-top: 20px;">
-        <div class="container">
-            <div class="row">
-                <div class="product__discount" style="padding-bottom: 0px;">
-                    <div class="section-title product__discount__title" style="margin-bottom: 0px;">
-                        <h2>Ecommerce</span></h2>
+                    <div class="product__discount" style="padding-bottom: 0px;padding-top: 15px;">
+                        <div class="section-title product__discount__title">
+                            <h2>Licitações</h2>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-12 col-md-7">
-                    <div class="row" id="lista_produtos_anuncios">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                                <table class="table table-head-fixed text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>Licitação</th>
+                                            <th>Status</th>
+                                            <th>Cod.</th>
+                                            <th>Órgão</th>
+                                            <th>Data início</th>
+                                            <th>Data encerramento</th>
+                                            <th>Situação atual</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1533</td>
+                                            <td>38</td>
+                                            <td>Bacon ipsum dolor sit</td>
+                                            <td>14/07/2023</td>
+                                            <td>15/08/2023</td>
+                                            <td> Análise de proposta</td>
+                                            <td>
+                                                <a class="btn btn-default">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1533</td>
+                                            <td>38</td>
+                                            <td>Bacon ipsum dolor sit</td>
+                                            <td>14/07/2023</td>
+                                            <td>15/08/2023</td>
+                                            <td> Análise de proposta</td>
+                                            <td>
+                                                <a class="btn btn-default">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1533</td>
+                                            <td>38</td>
+                                            <td>Bacon ipsum dolor sit</td>
+                                            <td>14/07/2023</td>
+                                            <td>15/08/2023</td>
+                                            <td> Análise de proposta</td>
+                                            <td>
+                                                <a class="btn btn-default">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1533</td>
+                                            <td>38</td>
+                                            <td>Bacon ipsum dolor sit</td>
+                                            <td>14/07/2023</td>
+                                            <td>15/08/2023</td>
+                                            <td> Análise de proposta</td>
+                                            <td>
+                                                <a class="btn btn-default">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1533</td>
+                                            <td>38</td>
+                                            <td>Bacon ipsum dolor sit</td>
+                                            <td>14/07/2023</td>
+                                            <td>15/08/2023</td>
+                                            <td> Análise de proposta</td>
+                                            <td>
+                                                <a class="btn btn-default">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div id="anuncio__pagination" class="product__pagination"
-                        style="padding-top: 50px;text-align: center;">
+                    <div id="pagination" class="product__pagination" style="text-align: center;">
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Shoping Cart Section End -->
+    <!-- Product Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
@@ -414,46 +570,21 @@
             </div>
         </div>
     </footer>
-
-    <div class="modal fade" id="modal-delete" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Excluir Item</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="col-lg-12">
-                        <div class="shoping__cart__table">
-                            Tem certeza que deseja excluir esse produto?
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="site-btn" onclick="deletarProduto()">Excluir</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery.mask.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/js_utils/categorias.js"></script>
+    <script src="js/js_utils/licitacao.js"></script>
     <script src="js/js_utils/iziToast.min.js"></script>
     <script src="js/js_utils/controler.js"></script>
-    <script src="js/js_utils/categorias.js"></script>
-    <script src="js/main.js"></script>
     <script src="js/js_utils/utils.js"></script>
 </body>
 

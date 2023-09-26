@@ -3,7 +3,7 @@
         window.location.href = "login.html";
     } else {
         carregarCompras(1);
-    }       
+    }
 }
 
 function carregarCompras(currentPage) {
@@ -26,7 +26,7 @@ function carregarCompras(currentPage) {
                 error(data.response.erro.message);
             } else {
                 //posteriormente implementar JWT           
-                $("#lista_compras").empty();      
+                $("#lista_compras").empty();
                 appendCompras('#lista_compras', data.response.sucesso.message.compras);
                 appendPagination('#pagination', data.response.sucesso.message.pagination, currentPage);
                 $("#heart-number").text(data.response.sucesso.message.numberFavorito);
@@ -46,23 +46,23 @@ function appendCompras(idHtml, compras) {
         for (var i = 0; i < compras.length; i++) {
             card_compras = '';
             card_compras = card_compras + '<tr>' +
-            '<td class="shoping__cart__quantity">' +
-                '<h5>' + compras[i].DT_PEDIDO + '</h5>' +                                        
-            '</td>' +
-            '<td class="shoping__cart__quantity">' +
+                '<td class="shoping__cart__quantity">' +
+                '<h5>' + compras[i].DT_PEDIDO + '</h5>' +
+                '</td>' +
+                '<td class="shoping__cart__quantity">' +
                 '<h5>' + compras[i].ID_PEDIDO + '</h5>' +
-            '</td>' +
-            '<td class="shoping__cart__quantity">' +
+                '</td>' +
+                '<td class="shoping__cart__quantity">' +
                 '<h5>' + compras[i].DT_ENTREGA + '</h5>' +
-            '</td>' +
-            '<td class="shoping__cart__total">R$' + compras[i].VL_TOTAL_PEDIDO + '</td>' +           
-            '<td class="shoping__cart__item__close">' +
-            '<span class="icon_plus" data-toggle="modal" data-target="#modal-default" onclick="montarModalItens(' + compras[i].ID_PEDIDO + ')"></span>' +
-            '</td>' +
-            '</tr>';
-        $(idHtml).append(card_compras);          
+                '</td>' +
+                '<td class="shoping__cart__total">R$' + compras[i].VL_TOTAL_PEDIDO + '</td>' +
+                '<td class="shoping__cart__item__close">' +
+                '<span class="icon_plus" data-toggle="modal" data-target="#modal-default" onclick="montarModalItens(' + compras[i].ID_PEDIDO + ')"></span>' +
+                '</td>' +
+                '</tr>';
+            $(idHtml).append(card_compras);
         }
-        armazenarLista('compras', compras);                
+        armazenarLista('compras', compras);
     }
 }
 
@@ -71,37 +71,37 @@ function armazenarLista(label, lista) {
 }
 
 function montarModalItens(id_pedido) {
-    $('#modalItens').empty(); 
+    $('#modalItens').empty();
     if (sessionStorage.getItem('compras')) {
         var compras = JSON.parse(sessionStorage.getItem('compras'));
         var itens = compras.filter(elemento => elemento.ID_PEDIDO == id_pedido);
-
+        var listIdAnuncio = [];
         if (itens[0]['ITENS_PEDIDO'].length > 0) {
             for (var i = 0; i < itens[0]['ITENS_PEDIDO'].length; i++) {
-                console.log(itens[0]['ITENS_PEDIDO']);
+                listIdAnuncio.push(itens[0]['ITENS_PEDIDO'][i].ID_ANUNCIO_PRODUTO);                
                 card_item = '';
                 card_item = card_item + '<tr>' +
-                '<td class="shoping__cart__quantity">' +
-                    '<img src="https://testetendering.myappnow.com.br/images/anuncios/' + itens[0]['ITENS_PEDIDO'][i].ID_ANUNCIO_PRODUTO + '/' + itens[0]['ITENS_PEDIDO'][i].DS_FOTO_PRODUTO + '" alt="">' +                                            
-                '</td>' +
-                '<td class="shoping__cart__quantity">' +
+                    '<td class="shoping__cart__quantity">' +
+                    '<img src="https://testetendering.myappnow.com.br/images/anuncios/' + itens[0]['ITENS_PEDIDO'][i].ID_ANUNCIO_PRODUTO + '/' + itens[0]['ITENS_PEDIDO'][i].foto[0].DS_FOTO_PRODUTO + '" alt="">' +
+                    '</td>' +
+                    '<td class="shoping__cart__quantity">' +
                     '<h5>' + itens[0]['ITENS_PEDIDO'][i].DS_PRODUTO + '</h5>' +
-                '</td>' +
-                '<td class="shoping__cart__quantity">' +
+                    '</td>' +
+                    '<td class="shoping__cart__quantity">' +
                     '<div class="quantity">' +
-                        '<div class="pro-qty">' +
-                            '<input type="text" value="' + itens[0]['ITENS_PEDIDO'][i].QT_PRODUTO + '">' +
-                        '</div>' +
+                    '<div class="pro-qty">' +
+                    '<input type="text" value="' + itens[0]['ITENS_PEDIDO'][i].QT_PRODUTO + '">' +
                     '</div>' +
-                '</td>' +
-                '<td class="shoping__cart__total">' + itens[0]['ITENS_PEDIDO'][i].VL_ITEM + '</td>' +
-                '<td class="shoping__cart__total">' + itens[0]['ITENS_PEDIDO'][i].VL_ENVIO + '</td>' +
-                '</tr>';
-            $('#modalItens').append(card_item);          
-            }          
+                    '</div>' +
+                    '</td>' +
+                    '<td class="shoping__cart__total">' + itens[0]['ITENS_PEDIDO'][i].VL_ITEM + '</td>' +
+                    '<td class="shoping__cart__total">' + itens[0]['ITENS_PEDIDO'][i].VL_ENVIO + '</td>' +
+                    '</tr>';
+                $('#modalItens').append(card_item);
+            }
+            sessionStorage.setItem('listIdAnuncio', JSON.stringify(listIdAnuncio));
         }
-
-    }    
+    }
 }
 
 function appendPagination(idHtml, pagination, currentPage, action) {
@@ -195,6 +195,62 @@ function appendPagination(idHtml, pagination, currentPage, action) {
     $("#anuncio_page_" + currentPage).css('background', '#7fad39');
     $("#anuncio_page_" + currentPage).css('border-color', '#7fad39');
     $("#anuncio_page_" + currentPage).css('color', '#ffffff');
+}
+
+function addCarrinho() {
+    var ID_COMPRADOR = 0;
+    if (sessionStorage.getItem('tend-compr')) {
+        var dataUser = JSON.parse(window.atob(sessionStorage.getItem('tend-compr')));
+        ID_COMPRADOR = dataUser.ID_COMPRADOR;
+    }
+    var listIdAnuncio = JSON.parse(sessionStorage.getItem('listIdAnuncio'));
+    var confirmAddCarrinho = 0;
+    if(listIdAnuncio.length > 0){
+        for (var i = 0; i < listIdAnuncio.length; i++) {
+            var myFormData = new FormData();
+            myFormData.append('idAnuncioProduto', listIdAnuncio[i]);
+            myFormData.append('idComprador', ID_COMPRADOR);
+            $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content') } });
+            $.ajax({
+                type: "POST",
+                url: 'https://testetendering.myappnow.com.br/api/addCarrinho',
+                dataType: "json",
+                processData: false, // important
+                contentType: false, // important
+                data: myFormData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (data.message) {
+                        error(data.response.erro.message);
+                    } else {
+                        //posteriormente implementar JWT  
+                        let numberCartUpdate = $("#cart-number").text();
+                        if (data.response.sucesso.message.returnCarrinho == 1) {
+                            numberCartUpdate = parseFloat(numberCartUpdate) + 1;
+                        } else if (data.response.sucesso.message.returnCarrinho == 0) {
+                            numberCartUpdate = parseFloat(numberCartUpdate) - 1;
+                        }
+                        $("#cart-number").text(numberCartUpdate);
+                        localStorage.setItem('cart-number', numberCartUpdate);    
+                        confirmAddCarrinho++;                 
+                    }
+        
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    tratarErro(XMLHttpRequest, XMLHttpRequest.responseJSON.response.erro.message);
+                }
+            });
+        } 
+        setTimeout(() => {
+            if(confirmAddCarrinho == 2){
+                window.location.href = 'shoping-cart.html';
+            }
+        }, 3000);
+        
+             
+    }    
 }
 
 
