@@ -83,7 +83,7 @@ function appendPagination(idHtml, pagination, currentPage, action) {
                 } else if ((parseFloat(currentPage) == 1 || parseFloat(currentPage) == 2) && pagination.last_page == 2) {
                         card_pagination = '';
                         card_pagination = card_pagination + '<a id="page_1"style="cursor: pointer;" onclick="carregarAnunciosProdutos(1)">1</a>' +
-                                '<a id="page_1"style="cursor: pointer;" onclick="carregarAnunciosProdutos(2)">2</a>';
+                                '<a id="page_2"style="cursor: pointer;" onclick="carregarAnunciosProdutos(2)">2</a>';
                         $(idHtml).append(card_pagination);
                 }
         } else if (parseFloat(currentPage) >= 1) {

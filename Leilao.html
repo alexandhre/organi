@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/iziToast.min.css">
     <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="https://adminlte.io/themes/v3/plugins/moment/moment.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script>
         function abrirPaginaLogin() {
             window.location.href = "login.html";
@@ -54,7 +56,7 @@
     </script>
 </head>
 
-<body onload="onloadCategoria();indexDetalheProduto();">
+<body onload="onloadCategoria('produtosGrid');indexLicitacao();">
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -70,13 +72,14 @@
             <ul>
                 <li><a href="favoritos.html"><i class="fa fa-heart"></i> <span id="heart-number-mobile"></span></a></li>
                 <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span
-                            id="cart-number-mobile"></span></a></li>
+                            id="cart-number-mobile>"></span></a></li>
             </ul>
         </div>
-        <div class="humberger__menu__widget">           
+        <div class="humberger__menu__widget">            
             <div class="header__top__right__language">
-                <div onclick="abrirPaginaLogin()"><i class="fa fa-user"></i></div>
-                <div id="nome-user-mobile"></div>
+                <div id="showPageLoginMobile" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
+                    <div id="nome-user-mobile"></div>
+                </div>
                 <span id="show-icon-menu-user-mobile" style="display: none;" class="arrow_carrot-down"></span>
                 <ul id="show-menu-user-mobile" style="display: none;">
                     <li><a href="perfil.html"><i class="fa fa-user"></i> Meu Perfil</a></li>
@@ -91,13 +94,13 @@
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 <li><a href="./index.html">Home</a></li>
-                <li class="active"><a href="#">Produtos</a>
+                <li><a href="#">Produtos</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./shop-grid.html">Prateleira de Produtos</a></li>
                         <li><a href="./shoping-cart.html">Carrinho de Compras</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Acesso Rápido</a>
+                <li class="active"><a href="#">Acesso Rápido</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="./licitacoes.html">Licitações</a></li>
                         <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
@@ -143,10 +146,11 @@
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>                            
+                            </div>                           
                             <div class="header__top__right__language">
-                                <div onclick="abrirPaginaLogin()"><i class="fa fa-user"></i></div>
-                                <div id="nome-user"></div>
+                                <div id="showPageLogin" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
+                                    <div id="nome-user"></div>
+                                </div>
                                 <span id="show-icon-menu-user" style="display: none;" class="arrow_carrot-down"></span>
                                 <ul id="show-menu-user" style="display: none; width:200px;">
                                     <li><a href="perfil.html"><i class="fa fa-user"></i> Meu Perfil</a></li>
@@ -179,13 +183,12 @@
                                     <li><a href="./shoping-cart.html">Carrinho de Compras</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Acesso Rápido</a>
+                            <li class="active"><a href="#">Acesso Rápido</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./licitacoes.html">Licitações</a></li>
                                     <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
                                 </ul>
                             </li>
-
                             <li><a href="./contact.html">Contato</a></li>
                         </ul>
                     </nav>
@@ -198,6 +201,7 @@
                             <li><a href="shoping-cart.html"><i class="fa fa-shopping-bag"></i> <span
                                         id="cart-number"></span></a></li>
                         </ul>
+
                     </div>
                 </div>
             </div>
@@ -231,8 +235,10 @@
                             </form>
                         </div>
                         <div class="hero__search__phone">
-                            <button type="button" onclick="abrirPaginaNovoProduto()" class="site-btn">Subir
-                                Anúncio</button>
+                            <div class="hero__search__phone__text">
+                                <button type="button" onclick="abrirPaginaNovoProduto()" class="site-btn">Subir
+                                    Anúncio</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -247,11 +253,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Detalhe Produto</h2>
+                        <h2>Leilões</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.html">Home</a>
-                            <a href="./shop-grid.html">Produtos</a>
-                            <span>Detalhe Produto</span>
+                            <span>Acesso Rápido</span>
                         </div>
                     </div>
                 </div>
@@ -260,155 +265,149 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- Product Details Section Begin -->
-    <section class="product-details spad">
+    <!-- Product Section Begin -->
+    <section class="product spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__pic">
-                        <div class="product__details__pic__item">
-                            <img id="imagem_principal" class="product__details__pic__item--large" alt="">
-                        </div>
-                        <div id="imagens_secundarias" class="product__details__pic__slider owl-carousel">
-                            <div style="display: none;" id="bigimg1" class="pt"
-                                data-imgbigurl="img/product/details/product-details-1.jpg">
-                                <img id="img1" src="img/product/details/thumb-1.jpg" alt="" />
-                            </div>
-                            <div style="display: none;" id="bigimg2" class="pt"
-                                data-imgbigurl="img/product/details/product-details-2.jpg">
-                                <img id="img2" src="img/product/details/thumb-2.jpg" alt="" />
-                            </div>
-                            <div style="display: none;" id="bigimg3" class="pt"
-                                data-imgbigurl="img/product/details/product-details-2.jpg">
-                                <img id="img3" src="img/product/details/thumb-2.jpg" alt="" />
-                            </div>
-                            <div style="display: none;" id="bigimg4" class="pt"
-                                data-imgbigurl="img/product/details/product-details-2.jpg">
-                                <img id="img4" src="img/product/details/thumb-2.jpg" alt="" />
-                            </div>
-                            <div style="display: none;" id="bigimg5" class="pt"
-                                data-imgbigurl="img/product/details/product-details-2.jpg">
-                                <img id="img5" src="img/product/details/thumb-2.jpg" alt="" />
-                            </div>
-                            <div style="display: none;" id="bigimg6" class="pt"
-                                data-imgbigurl="img/product/details/product-details-2.jpg">
-                                <img id="img6" src="img/product/details/thumb-2.jpg" alt="" />
-                            </div>
-                            <div style="display: none;" id="bigimg7" class="pt"
-                                data-imgbigurl="img/product/details/product-details-2.jpg">
-                                <img id="img7" src="img/product/details/thumb-2.jpg" alt="" />
-                            </div>
-                            <div style="display: none;" id="bigimg8" class="pt"
-                                data-imgbigurl="img/product/details/product-details-2.jpg">
-                                <img id="img8" src="img/product/details/thumb-2.jpg" alt="" />
-                            </div>
+                <div class="col-lg-3 col-md-5">
+                    <div class="sidebar">
+                        <div class="sidebar__item">
+                            <h4>Situação da licitação </h4>
+                            <ul>
+                                <div class="checkout__input__checkbox">
+                                    <label for="aberta">Abertas<input checked type="checkbox" id="aberta" value="1" name="checkboxvar[]">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="anulada">Anuladas
+                                        <input type="checkbox" id="anulada" value="2" name="checkboxvar[]">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="disputa">Em disputa<input type="checkbox" id="disputa" value="3" name="checkboxvar[]">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="fechada">Fechadas<input type="checkbox" id="fechada" value="4" name="checkboxvar[]">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="homologada">Homologadas<input type="checkbox" id="homologada" value="5" name="checkboxvar[]">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="publicada">Publicadas<input type="checkbox" id="publicada" value="6" name="checkboxvar[]">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="revogada">Revogadas<input type="checkbox" id="revogada" value="7" name="checkboxvar[]">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>                                
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="product__details__text">
-                        <h3 id="nome_produto"></h3>
-                        <!-- <div class="product__details__rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                        </div> -->
-                        <div class="product__details__price">
-                            R$<span id="vl_produto"></span>
-                            <span id="label_produto_antigo"
-                                style="display:none;font-size: 45%;font-weight: 100;color: black;"> De:</span>
-                            <span id="vl_produto_antigo"
-                                style="display:none;font-size: 45%;font-weight: 100;text-decoration: line-through;color: black;"></span>
-                        </div>
-                        <p id="desc_produto"></p>
-                        <!-- <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input id="qtd_produto" type="text" value="1">
-                                </div>
-                            </div>
-                        </div> -->
-                        <a id="cart_btn" style="cursor: pointer;color: white;" class="primary-btn">ADD ao Carrinho</a>
-                        <a id="heart_btn" style="cursor: pointer;" class="heart-icon"><span id="heart_icon"
-                                class="icon_heart_alt"></span></a>
-                        <ul>
-                            <li><b>Disponibilidade</b> <span id="estoque"></span></li>
-                            <!-- <li><b>Envio</b> <span>01 dia de envio. <samp>Retirada grátis hoje</samp></span></li> -->
-                            <li><b>Peso</b> <span id="peso_produto"></span></li>
-                            <!-- <li><b>Share on</b>
-                                <div class="share">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                            </li> -->
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="product__details__tab">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                    aria-selected="true">Descrição</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
-                                    aria-selected="false">Informações</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <p id="desc_produto2"></p>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__tab__desc">
-                                    <div class="shoping__cart__table">
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>Quantidade Disponível</th>
-                                                    <th>Quantidade Minima do Pedido</th>
-                                                    <th>Altura</th>
-                                                    <th>Largura</th>
-                                                    <th>Comprimento</th>
-                                                    <th>Quantidade de Itens no Pacote</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="info_produto">
-                                            </tbody>
-                                        </table>
+                <div class="col-lg-9 col-md-7">
+                    <div class="row">
+                        <div class="card-body">
+                            <div class="col-lg-12 float-right">                                                             
+                                <div class="float-left pr-2">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="product__discount" style="padding-bottom: 0px;">
+                                                <div class="section-title product__discount__title" style="margin-bottom: 30px;">
+                                                    <h2>Filtros</h2>
+                                                </div>                        
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="float-right" style="padding-top: 10px;">
+                                    <button onclick="window.location.href='criarLicitacao.html'" type="button" class="site-btn">Criar Licitação</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Product Details Section End -->
+                  
+                    <div class="row">
+                        <div class="card-body">
+                            <div class="col-lg-12 float-right">                              
+                                <div class="float-left pr-2">
+                                    <div class="row">
+                                        <div class="col-lg-12" style="padding-right: 80px;">
+                                            <div class="checkout__input">
+                                                <p>Abrangência da disputa</p>
+                                                <select name="abrangencia" id="abrangencia" class="form-control">
+                                                    <option value="1" selected>Nacional</option>
+                                                    <option value="2">Regional</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="float-left pr-2">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="checkout__input">
+                                                <p>Período</p>
+                                                <select name="periodo" id="periodo" class="form-control">
+                                                    <option value="1" selected>Hoje</option>
+                                                    <option value="2">Últimos 3 dias</option>
+                                                    <option value="3">Últimos 7 dias</option>
+                                                    <option value="4">Últimos 15 dias</option>
+                                                    <option value="5">Últimos 30 dias</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="float-right" style="padding-top: 45px;">
+                                    <button onclick="carregarLicitacoes(1);" type="button" class="site-btn">Aplicar filtros</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- Related Product Section Begin -->
-    <section class="related-product">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title related__product__title">
-                        <h2>Podem te interessar</h2>
+                    <div class="product__discount" style="padding-bottom: 0px;padding-top: 15px;">
+                        <div class="section-title product__discount__title">
+                            <h2>Licitações</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                                <table class="table table-head-fixed text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>Licitação</th>
+                                            <th>Situação</th>
+                                            <th>Valor</th>
+                                            <th>Modalidade</th>
+                                            <th>Data início</th>
+                                            <th>Data encerramento</th>                                        
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="lista_licitacoes">                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pagination" class="product__pagination" style="text-align: center;">
                     </div>
                 </div>
             </div>
-            <div class="row" id="anuncios_semelhates">
-            </div>
         </div>
     </section>
-    <!-- Related Product Section End -->
+    <!-- Product Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer spad">
@@ -478,7 +477,7 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/js_utils/categorias.js"></script>
-    <script src="js/js_utils/detalheProduto.js"></script>
+    <script src="js/js_utils/licitacao.js"></script>
     <script src="js/js_utils/iziToast.min.js"></script>
     <script src="js/js_utils/controler.js"></script>
     <script src="js/js_utils/utils.js"></script>

@@ -12,8 +12,20 @@ function carregarAnunciosProdutos(currentPage) {
         var dataUser = JSON.parse(window.atob(sessionStorage.getItem('tend-compr')));
         ID_COMPRADOR = dataUser.ID_COMPRADOR;
     }
+    
+    var categoriasId = JSON.parse(sessionStorage.getItem('categoriasId'));
+
+    var precoMin = $("#minamount").val().trim().split("$")[1];
+    var precoMax = $("#maxamount").val().trim().split("$")[1];
+
     var myFormData = new FormData();
+    myFormData.append('categoriasId', categoriasId);
     myFormData.append('idComprador', ID_COMPRADOR);
+    myFormData.append('precoMin', precoMin);
+    myFormData.append('precoMax', precoMax);
+
+    $('#span-produto').text("");
+    $('#spinner-produto').css('display', 'block');
     $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content') } });
     $.ajax({
         type: "POST",
@@ -29,7 +41,10 @@ function carregarAnunciosProdutos(currentPage) {
             if (data.message) {
                 error(data.response.erro.message);
             } else {
-                //posteriormente implementar JWT                 
+                //posteriormente implementar JWT  
+                $('#span-produto').text("Pesquisar");
+                $('#spinner-produto').css('display', 'none');
+                $("#lista_produtos_anuncios").empty();                
                 appendProdutoAnuncio('#lista_produtos_anuncios', data.response.sucesso.message.produtos, 'inicio');
                 appendPagination('#pagination', data.response.sucesso.message.pagination, currentPage);
                 $("#heart-number").text(data.response.sucesso.message.numberFavorito);

@@ -25,6 +25,8 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="https://adminlte.io/themes/v3/plugins/moment/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script>
         function abrirPaginaLogin() {
             window.location.href = "login.html";
@@ -33,7 +35,7 @@
             window.location.href = "novoProduto.html";
         }
         $(document).ready(function ()//When the dom is ready or just add it if you already have a .ready function
-        {            
+        {
             if (sessionStorage.getItem('tend-compr')) {
                 var dataUser = JSON.parse(window.atob(sessionStorage.getItem('tend-compr')));
                 //web
@@ -56,7 +58,7 @@
     </script>
 </head>
 
-<body onload="onloadCategoria('produtosGrid');">
+<body onload="carregarDadosLicitacao();">
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -75,7 +77,7 @@
                             id="cart-number-mobile>"></span></a></li>
             </ul>
         </div>
-        <div class="humberger__menu__widget">           
+        <div class="humberger__menu__widget">            
             <div class="header__top__right__language">
                 <div id="showPageLoginMobile" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
                     <div id="nome-user-mobile"></div>
@@ -146,7 +148,7 @@
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>                           
+                            </div>                            
                             <div class="header__top__right__language">
                                 <div id="showPageLogin" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
                                     <div id="nome-user"></div>
@@ -271,9 +273,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-7">
-                    <div class="product__discount" style="padding-bottom: 0px;padding-top: 15px;">
-                        <div class="section-title product__discount__title">
-                            <h2>Nova Licitação</h2>
+                    <div class="row">
+                        <div class="card-body">
+                            <div class="col-lg-12 float-right">
+                                <div class="float-left pr-2">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="product__discount"
+                                                style="padding-bottom: 0px;padding-top: 15px;">
+                                                <div class="section-title product__discount__title">
+                                                    <h2>Editar Licitação</h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -284,13 +299,19 @@
                                         <li class="nav-item">
                                             <a class="nav-link active" id="custom-content-below-criar-tab"
                                                 data-toggle="pill" href="#custom-content-below-criar" role="tab"
-                                                aria-controls="custom-content-below-criar" aria-selected="true">Criar
+                                                aria-controls="custom-content-below-criar" aria-selected="true">Editar
                                                 Licitação</a>
                                         </li>
                                         <li class="nav-item">
                                             <a style="cursor: pointer;" class="nav-link"
-                                                id="custom-content-below-confirmar-tab"
-                                                role="tab" aria-controls="custom-content-below-confirmar"
+                                                id="custom-content-below-lote-tab" role="tab"
+                                                aria-controls="custom-content-below-lote"
+                                                aria-selected="false">Lotes</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a style="cursor: pointer;" class="nav-link"
+                                                id="custom-content-below-confirmar-tab" role="tab"
+                                                aria-controls="custom-content-below-confirmar"
                                                 aria-selected="false">Confirmar</a>
                                         </li>
                                     </ul>
@@ -352,7 +373,7 @@
                                                                             <input placeholder="R$" name="valor_base"
                                                                                 id="valor_base" type="text">
                                                                         </div>
-                                                                    </div>                                                                  
+                                                                    </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-lg-6">
@@ -535,7 +556,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>                                                               
+                                                                </div>
                                                                 <div class="row">
                                                                     <div class="col-lg-12 col-md-12"
                                                                         style="margin-bottom: 24px;">
@@ -563,8 +584,9 @@
                                                                     <div class="col-lg-12" style="margin-bottom: 24px;">
                                                                         <div class="checkout__input">
                                                                             <p>Moeda da proposta<span>*</span></p>
-                                                                            <select name="moedaProposta"
-                                                                                id="moedaProposta" class="form-control">
+                                                                            <select name="moeda_proposta"
+                                                                                id="moeda_proposta"
+                                                                                class="form-control">
                                                                                 <option value="0" selected>Selecione
                                                                                 </option>
                                                                                 <option value="1"> Proposta na moeda
@@ -589,7 +611,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <button style="margin-top: 24px;" id="btn-produto"
-                                                                    onclick="validarDados()" type="button"
+                                                                    onclick="validarDadosEditar()" type="button"
                                                                     class="site-btn">
                                                                     <span id="span-perfil">Continuar</span>
                                                                 </button>
@@ -600,109 +622,216 @@
                                             </section>
                                             <!-- Section Produto -->
                                         </div>
+                                        <div class="tab-pane fade" id="custom-content-below-lote" role="tabpanel"
+                                            aria-labelledby="custom-content-below-anuncio-tab">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="card-body table-responsive p-0" style="height: 300px;">
+                                                        <table class="table table-head-fixed text-nowrap">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Número</th>
+                                                                    <th>Ação</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="lista_lotes">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button onclick="showModalLote(1)"
+                                                style="margin-top: 24px;margin-right: 10px;" id="btn-produto"
+                                                type="button" class="site-btn">
+                                                <span id="span-perfil">Criar Lote</span>
+                                            </button>
+                                            <button style="margin-top: 24px;" id="btn-produto" onclick="validarLotes()"
+                                                type="button" class="site-btn">
+                                                <span id="span-perfil">Continuar</span>
+                                            </button>
+                                        </div>
                                         <div class="tab-pane fade" id="custom-content-below-confirmar" role="tabpanel"
                                             aria-labelledby="custom-content-below-anuncio-tab">
                                             <!-- Section Anuncio -->
                                             <section class="checkout spad" style="padding-top: 20px;">
                                                 <div class="container">
                                                     <div class="row">
-                                                        <div class="col-lg-12 col-md-12"> 
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="cliente">Cliente:</label>
-                                                                    <p class="font-weight-bold" id="cliente_confirmacao"></p>                                                            
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="unidade">Unidade organizacional:</label>
-                                                                    <p class="font-weight-bold" id="unidade_organizacional_confirmacao"></p>                                                                
-                                                            </div>
-                                                        </div>
-                                                     
-                                                        <div class="col-lg-12 col-md-12">                                                      
+                                                        <div class="col-lg-12 col-md-12">
                                                             <div class="col-lg-6 col-md-6 float-left">
-                                                                <label for="tipocadastro" class="float-left pr-2">Tipo de cadastro:</label>
-                                                                <p class="font-weight-bold" id="tipo_cadastro_confirmacao"></p>
-                                                            </div>   
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
+                                                                <div class="form-group">
+                                                                    <label for="cliente">Cliente:</label>
+                                                                    <p class="font-weight-bold"
+                                                                        id="cliente_confirmacao"></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="unidade">Unidade organizacional:</label>
+                                                                    <p class="font-weight-bold"
+                                                                        id="unidade_organizacional_confirmacao"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <label for="tipocadastro" class="float-left pr-2">Tipo
+                                                                    de cadastro:</label>
+                                                                <p class="font-weight-bold"
+                                                                    id="tipo_cadastro_confirmacao"></p>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
                                                                     <label for="unidade">Valor Base:</label>
-                                                                    <p class="font-weight-bold" id="valor_base_confirmacao"></p>                                                                
-                                                            </div>                                                      
-                                                        </div>
-    
-                                                        <div class="col-lg-12 col-md-12"> 
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="edital"  class="float-left pr-2">Edital:</label>
-                                                                    <p class="font-weight-bold" id="edital_confirmacao"></p>                                                                
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="processo" class="float-left pr-2">Processo:</label>
-                                                                    <p class="font-weight-bold" id="processo_confirmacao"></p>                                                                                                                                  
+                                                                    <p class="font-weight-bold"
+                                                                        id="valor_base_confirmacao"></p>
+                                                                </div>
                                                             </div>
                                                         </div>
-    
-                                                        <div class="col-lg-12 col-md-12"> 
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="modalidade" class="float-left pr-2">Modalidade/Tipo:</label>
-                                                                    <p class="font-weight-bold" id="modalidade_tipo_confirmacao"></p>                                                                
+
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="edital"
+                                                                        class="float-left pr-2">Edital:</label>
+                                                                    <p class="font-weight-bold" id="edital_confirmacao">
+                                                                    </p>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="fornecedor"  class="float-left pr-2">Participação do fornecedor:</label>                                                              
-                                                                    <p class="font-weight-bold" id="fornecedor_confirmacao"></p>                                                                
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-md-12"> 
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="formaCond" class="float-left pr-2">Forma de condução:</label>
-                                                                    <p class="font-weight-bold" id="forma_conducao_confirmacao"></p>                                                                
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="tipo"  class="float-left pr-2">Tipo:</label>                                                              
-                                                                    <p class="font-weight-bold" id="tipo_confirmacao"></p>                                                                
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12 col-md-12"> 
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="moeda" class="float-left pr-2">Moeda:</label>
-                                                                    <p class="font-weight-bold" id="moeda_confirmacao"></p>                                                                
-                                                            </div>
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="prazoImpugnacao"  class="float-left pr-2">Prazo para impugnação até:</label>                                                              
-                                                                    <p class="font-weight-bold" id="prazo_impugnacao_confirmacao"></p>                                                                
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="processo"
+                                                                        class="float-left pr-2">Processo:</label>
+                                                                    <p class="font-weight-bold"
+                                                                        id="processo_confirmacao"></p>
+
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-12 col-md-12"> 
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="inicioProposta"  class="float-left pr-2">Início acolhimento de propostas:</label>                                                              
-                                                                    <p class="font-weight-bold" id="inicioProposta_confirmacao"></p>                                                               
+
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="modalidade"
+                                                                        class="float-left pr-2">Modalidade/Tipo:</label>
+                                                                    <p class="font-weight-bold"
+                                                                        id="modalidade_tipo_confirmacao"></p>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="aberturaProposta"  class="float-left pr-2">Abertura das propostas:</label>                                                              
-                                                                    <p class="font-weight-bold" id="aberturaProposta_confirmacao"></p>                                                                
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="fornecedor"
+                                                                        class="float-left pr-2">Participação do
+                                                                        fornecedor:</label>
+                                                                    <p class="font-weight-bold"
+                                                                        id="fornecedor_confirmacao"></p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-12 col-md-12"> 
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="dataHoraDisputa"  class="float-left pr-2">Data e hora da disputa:</label>                                                              
-                                                                    <p class="font-weight-bold" id="dataHoraDisputa_confirmacao"></p>                                                                                                                                     
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="formaCond" class="float-left pr-2">Forma
+                                                                        de condução:</label>
+                                                                    <p class="font-weight-bold"
+                                                                        id="forma_conducao_confirmacao"></p>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-lg-6 col-md-6 float-left">                                                                
-                                                                    <label for="finalDisputa"  class="float-left pr-2">Final da disputa:</label>                                                              
-                                                                    <p class="font-weight-bold" id="finalDisputa_confirmacao"></p>                                                                
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="tipo"
+                                                                        class="float-left pr-2">Tipo:</label>
+                                                                    <p class="font-weight-bold" id="tipo_confirmacao">
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-12 col-md-12">                                                                                                                  
-                                                                <label for="abrangencia" class="float-left pr-2">Abrangência:</label>
-                                                                <p class="font-weight-bold" id="abrangencia_confirmacao"></p>                                                                                                                    
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="moeda"
+                                                                        class="float-left pr-2">Moeda:</label>
+                                                                    <p class="font-weight-bold" id="moeda_confirmacao">
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="prazoImpugnacao"
+                                                                        class="float-left pr-2">Prazo para impugnação
+                                                                        até:</label>
+                                                                    <p class="font-weight-bold"
+                                                                        id="prazo_impugnacao_confirmacao"></p>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-lg-12 col-md-12">                                                                                                              
-                                                              <label for="moedaProposta" class="float-left pr-2">Moeda da proposta:</label>
-                                                              <p class="font-weight-bold" id="moeda_proposta_confirmacao"></p>                                                                                                               
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="inicioProposta"
+                                                                        class="float-left pr-2">Início acolhimento de
+                                                                        propostas:</label>
+                                                                    <p class="font-weight-bold"
+                                                                        id="inicioProposta_confirmacao"></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="aberturaProposta"
+                                                                        class="float-left pr-2">Abertura das
+                                                                        propostas:</label>
+                                                                    <p class="font-weight-bold"
+                                                                        id="aberturaProposta_confirmacao"></p>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-lg-12 col-md-12">                                                                                                                  
-                                                                <label for="resumo" class="pr-2">Resumo da licitação:</label>
-                                                                <p class="font-weight-bold text-break" id="resumo_confirmacao"></p>                                                                                                                 
-                                                      </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="dataHoraDisputa"
+                                                                        class="float-left pr-2">Data e hora da
+                                                                        disputa:</label>
+                                                                    <p class="font-weight-bold"
+                                                                        id="dataHoraDisputa_confirmacao"></p>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-6 float-left">
+                                                                <div class="form-group">
+                                                                    <label for="finalDisputa"
+                                                                        class="float-left pr-2">Final da
+                                                                        disputa:</label>
+                                                                    <p class="font-weight-bold"
+                                                                        id="finalDisputa_confirmacao"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="abrangencia"
+                                                                    class="float-left pr-2">Abrangência:</label>
+                                                                <p class="font-weight-bold"
+                                                                    id="abrangencia_confirmacao"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="moeda_proposta"
+                                                                    class="float-left pr-2">Moeda da proposta:</label>
+                                                                <p class="font-weight-bold"
+                                                                    id="moeda_proposta_confirmacao"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 col-md-12">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="resumo" class="pr-2">Resumo da
+                                                                    licitação:</label>
+                                                                <p class="font-weight-bold text-break"
+                                                                    id="resumo_confirmacao"></p>
+                                                            </div>
+                                                        </div>
                                                         <button style="margin-top: 24px;margin-left: 24px;"
-                                                            id="btn-produto" onclick="salvarLicitacao()" type="button"
+                                                            id="btn-produto" onclick="editarLicitacao()" type="button"
                                                             class="site-btn">
                                                             <span id="span-perfil">Salvar</span>
                                                         </button>
@@ -782,6 +911,179 @@
     </footer>
     <!-- Footer Section End -->
 
+    <!-- Modal Section Begin -->
+    <section>
+        <div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog  modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Lote</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <section class="checkout spad" style="padding-top: 20px;">
+                            <div class="container">
+                                <div class="checkout__form">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 mb-3">
+                                            <h4 id="numero_licitacao"></h4>
+                                        </div>
+                                        <div class="col-lg-12 col-md-6">
+                                            <div class="row">
+                                                <div class="col-lg-6" style="margin-bottom: 24px;">
+                                                    <div class="checkout__input">
+                                                        <p>Tipo de disputa:<span>*</span></p>
+                                                        <select type="text" class="form-select col-md-12"
+                                                            id="tipo_disputa">
+                                                            <option value="0"> Selecione</option>
+                                                            <option value="1"> Com disputa em sessão pública
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6" style="margin-bottom: 24px;">
+                                                    <div class="checkout__input">
+                                                        <p>Critério de seleção:<span>*</span></p>
+                                                        <select type="text" class="form-select col-md-12" id="criterio">
+                                                            <option value="0"> Selecione</option>
+                                                            <option value="1"> Todas as propostas</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12" style="margin-bottom: 24px;">
+                                                    <label for="checktratamento" class="float-left">Aplicar tratamento
+                                                        diferenciado para ME/EPP/COOP:</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <div class="form-check  float-left pr-3">
+                                                            <input class="form-check-input" type="radio"
+                                                                id="checktratamentoSim" name="checktratamento">
+                                                            <label class="form-check-label">Sim</label>
+                                                        </div>
+                                                        <div class="form-check float-left">
+                                                            <input class="form-check-input " type="radio"
+                                                                id="checktratamentoNao" name="checktratamento">
+                                                            <label class="form-check-label">Não</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12" style="margin-bottom: 24px;">
+                                                    <label for="checkExclusividade" class="float-left">Exclusividade de
+                                                        participação
+                                                        por ME/EPP/COOP:</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <div class="form-check  float-left pr-3">
+                                                            <input class="form-check-input" type="radio"
+                                                                id="checkExclusividadeSim" name="checkExclusividade">
+                                                            <label class="form-check-label">Sim</label>
+                                                        </div>
+                                                        <div class="form-check float-left">
+                                                            <input class="form-check-input " type="radio"
+                                                                id="checkExclusividadeNao" name="checkExclusividade">
+                                                            <label class="form-check-label">Não</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6" style="margin-bottom: 24px;">
+                                                    <div class="checkout__input">
+                                                        <p>Tempo mínimo entre lances:<span>*</span></p>
+                                                        <select type="text" class="form-select col-md-12"
+                                                            id="tempo_lance">
+                                                            <option value="0"> Selecione</option>
+                                                            <option value="1"> 0 Segundos</option>
+                                                            <option value="2"> 1 Segundos</option>
+                                                            <option value="3"> 2 Segundos</option>
+                                                            <option value="4"> 3 Segundos</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6" style="margin-bottom: 24px;">
+                                                    <div class="checkout__input">
+                                                        <p>Tempo mínimo entre o menor lance:<span>*</span></p>
+                                                        <select type="text" class="form-select col-md-12"
+                                                            id="tempo_menor_lance">
+                                                            <option value="0"> Selecione</option>
+                                                            <option value="1"> 0 Segundos</option>
+                                                            <option value="2"> 1 Segundos</option>
+                                                            <option value="3"> 2 Segundos</option>
+                                                            <option value="4"> 3 Segundos</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="checkout__input">
+                                                        <p>Valor mínimo entre lances:<span>*</span></p>
+                                                        <input placeholder="Valor mínimo entre lances"
+                                                            name="minimo_lance" id="minimo_lance" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="checkout__input">
+                                                        <p>Valor mínimo entre menor lance:<span>*</span></p>
+                                                        <input placeholder="Valor mínimo entre menor lance"
+                                                            name="minimo_menor_lance" id="minimo_menor_lance"
+                                                            type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12" style="margin-bottom: 24px;">
+                                                    <label for="checkFornecedor" class="float-left">A
+                                                        descrição da proposta do fornecedor é
+                                                        obrigatória?</label>
+                                                    <div class="form-check form-check-inline">
+                                                        <div class="form-check  float-left pr-3">
+                                                            <input class="form-check-input" type="radio"
+                                                                id="checkFornecedorSim" name="checkFornecedor">
+                                                            <label class="form-check-label">Sim</label>
+                                                        </div>
+                                                        <div class="form-check float-left">
+                                                            <input class="form-check-input " type="radio"
+                                                                id="checkFornecedorNao" name="checkFornecedor">
+                                                            <label class="form-check-label">Não</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <p>Descrição do lote:</p>
+                                                    <textarea style="margin-bottom: 0px;" class="textarea-form"
+                                                        id="desc_lote" name="desc_lote"
+                                                        placeholder="Descrição do lote..."></textarea>
+                                                    <span> Caracteres restantes: 1000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                        <button style="margin-top: 24px;" id="btn-modal-lote" onclick="validarDadosLote()" type="button"
+                            class="site-btn">
+                            <span id="span-perfil">Salvar</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- Modal Section End -->
+
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -793,6 +1095,7 @@
     <script src="js/main.js"></script>
     <script src="js/js_utils/categorias.js"></script>
     <script src="js/js_utils/licitacao.js"></script>
+    <script src="js/js_utils/lote.js"></script>
     <script src="js/js_utils/iziToast.min.js"></script>
     <script src="js/js_utils/controler.js"></script>
     <script src="js/js_utils/utils.js"></script>
@@ -824,12 +1127,25 @@
         });
     </script>
     <script>
-        $(function(){
+        $(function () {
             $('#valor_base').maskMoney({
-              prefix:'R$ ',
-              allowNegative: true,
-              thousands:'.', decimal:',',
-              affixesStay: true});
+                prefix: 'R$ ',
+                allowNegative: true,
+                thousands: '.', decimal: ',',
+                affixesStay: true
+            });
+            $('#minimo_lance').maskMoney({
+                prefix: 'R$ ',
+                allowNegative: true,
+                thousands: '.', decimal: ',',
+                affixesStay: true
+            });
+            $('#minimo_menor_lance').maskMoney({
+                prefix: 'R$ ',
+                allowNegative: true,
+                thousands: '.', decimal: ',',
+                affixesStay: true
+            });
         })
     </script>
 </body>

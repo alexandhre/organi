@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+   <title>Tendering</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="css/iziToast.min.css">
     <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="https://adminlte.io/themes/v3/plugins/moment/moment.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script>
         function abrirPaginaLogin() {
             window.location.href = "login.html";
@@ -73,16 +75,7 @@
                             id="cart-number-mobile>"></span></a></li>
             </ul>
         </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__language">
-                <img src="img/brazil.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Português</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
-            </div>
+        <div class="humberger__menu__widget">            
             <div class="header__top__right__language">
                 <div id="showPageLoginMobile" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
                     <div id="nome-user-mobile"></div>
@@ -111,9 +104,6 @@
                     <ul class="header__menu__dropdown">
                         <li><a href="./licitacoes.html">Licitações</a></li>
                         <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
-                        <li><a href="./checkout.html">Credenciamento na Plataforma</a></li>
-                        <li><a href="./checkout.html">Requisitos para Utilização</a></li>
-                        <li><a href="./checkout.html">Suporte Técnico</a></li>
                     </ul>
                 </li>
 
@@ -156,16 +146,7 @@
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            </div>
-                            <div class="header__top__right__language">
-                                <img src="img/brazil.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Português</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div>
+                            </div>                            
                             <div class="header__top__right__language">
                                 <div id="showPageLogin" onclick="abrirPaginaLogin()"><i class="fa fa-user"></i>
                                     <div id="nome-user"></div>
@@ -206,9 +187,6 @@
                                 <ul class="header__menu__dropdown">
                                     <li><a href="./licitacoes.html">Licitações</a></li>
                                     <li><a href="./registrarFornecedor.html">Cadastramento de Fornecedores</a></li>
-                                    <li><a href="./checkout.html">Credenciamento na Plataforma</a></li>
-                                    <li><a href="./checkout.html">Requisitos para Utilização</a></li>
-                                    <li><a href="./checkout.html">Suporte Técnico</a></li>
                                 </ul>
                             </li>
                             <li><a href="./contact.html">Contato</a></li>
@@ -297,37 +275,38 @@
                             <h4>Situação da licitação </h4>
                             <ul>
                                 <div class="checkout__input__checkbox">
-                                    <label for="aberta">Abertas<input type="checkbox" id="aberta">
+                                    <label for="aberta">Abertas<input checked type="checkbox" id="aberta" value="1" name="checkboxvar[]">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <div class="checkout__input__checkbox">
-                                    <label for="anulada">Anuladas<input type="checkbox" id="anulada">
+                                    <label for="anulada">Anuladas
+                                        <input type="checkbox" id="anulada" value="2" name="checkboxvar[]">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <div class="checkout__input__checkbox">
-                                    <label for="disputa">Em disputa<input type="checkbox" id="disputa">
+                                    <label for="disputa">Em disputa<input type="checkbox" id="disputa" value="3" name="checkboxvar[]">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <div class="checkout__input__checkbox">
-                                    <label for="fechada">Fechadas<input type="checkbox" id="fechada">
+                                    <label for="fechada">Fechadas<input type="checkbox" id="fechada" value="4" name="checkboxvar[]">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <div class="checkout__input__checkbox">
-                                    <label for="homologada">Homologadas<input type="checkbox" id="homologada">
+                                    <label for="homologada">Homologadas<input type="checkbox" id="homologada" value="5" name="checkboxvar[]">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <div class="checkout__input__checkbox">
-                                    <label for="publicada">Publicadas<input type="checkbox" id="publicada">
+                                    <label for="publicada">Publicadas<input type="checkbox" id="publicada" value="6" name="checkboxvar[]">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
                                 <div class="checkout__input__checkbox">
-                                    <label for="revogada">Revogadas<input type="checkbox" id="revogada">
+                                    <label for="revogada">Revogadas<input type="checkbox" id="revogada" value="7" name="checkboxvar[]">
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>                                
@@ -366,8 +345,7 @@
                                             <div class="checkout__input">
                                                 <p>Abrangência da disputa</p>
                                                 <select name="abrangencia" id="abrangencia" class="form-control">
-                                                    <option value="0" selected>Selecione</option>
-                                                    <option value="1">Nacional</option>
+                                                    <option value="1" selected>Nacional</option>
                                                     <option value="2">Regional</option>
                                                 </select>
                                             </div>
@@ -379,9 +357,8 @@
                                         <div class="col-lg-12">
                                             <div class="checkout__input">
                                                 <p>Período</p>
-                                                <select name="abrangencia" id="abrangencia" class="form-control">
-                                                    <option value="0" selected>Selecione</option>
-                                                    <option value="1">Hoje</option>
+                                                <select name="periodo" id="periodo" class="form-control">
+                                                    <option value="1" selected>Hoje</option>
                                                     <option value="2">Últimos 3 dias</option>
                                                     <option value="3">Últimos 7 dias</option>
                                                     <option value="4">Últimos 15 dias</option>
@@ -392,7 +369,7 @@
                                     </div>
                                 </div>
                                 <div class="float-right" style="padding-top: 45px;">
-                                    <button type="button" class="site-btn">Aplicar filtros</button>
+                                    <button onclick="carregarLicitacoes(1);" type="button" class="site-btn">Aplicar filtros</button>
                                 </div>
                             </div>
                         </div>
@@ -410,81 +387,15 @@
                                     <thead>
                                         <tr>
                                             <th>Licitação</th>
-                                            <th>Status</th>
-                                            <th>Cod.</th>
-                                            <th>Órgão</th>
+                                            <th>Situação</th>
+                                            <th>Valor</th>
+                                            <th>Modalidade</th>
                                             <th>Data início</th>
-                                            <th>Data encerramento</th>
-                                            <th>Situação atual</th>
+                                            <th>Data encerramento</th>                                        
                                             <th>Ação</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1533</td>
-                                            <td>38</td>
-                                            <td>Bacon ipsum dolor sit</td>
-                                            <td>14/07/2023</td>
-                                            <td>15/08/2023</td>
-                                            <td> Análise de proposta</td>
-                                            <td>
-                                                <a class="btn btn-default">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1533</td>
-                                            <td>38</td>
-                                            <td>Bacon ipsum dolor sit</td>
-                                            <td>14/07/2023</td>
-                                            <td>15/08/2023</td>
-                                            <td> Análise de proposta</td>
-                                            <td>
-                                                <a class="btn btn-default">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1533</td>
-                                            <td>38</td>
-                                            <td>Bacon ipsum dolor sit</td>
-                                            <td>14/07/2023</td>
-                                            <td>15/08/2023</td>
-                                            <td> Análise de proposta</td>
-                                            <td>
-                                                <a class="btn btn-default">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1533</td>
-                                            <td>38</td>
-                                            <td>Bacon ipsum dolor sit</td>
-                                            <td>14/07/2023</td>
-                                            <td>15/08/2023</td>
-                                            <td> Análise de proposta</td>
-                                            <td>
-                                                <a class="btn btn-default">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1533</td>
-                                            <td>38</td>
-                                            <td>Bacon ipsum dolor sit</td>
-                                            <td>14/07/2023</td>
-                                            <td>15/08/2023</td>
-                                            <td> Análise de proposta</td>
-                                            <td>
-                                                <a class="btn btn-default">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    <tbody id="lista_licitacoes">                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -551,23 +462,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer__copyright">
-                        <div class="footer__copyright__text">
-                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;
-                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This
-                                template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
-                                    href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            </p>
-                        </div>
-                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
-                    </div>
-                </div>
-            </div>
+            </div>           
         </div>
     </footer>
     <!-- Footer Section End -->

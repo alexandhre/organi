@@ -276,7 +276,11 @@ function carregarProdutos() {
         type: "POST",
         url: 'https://testetendering.myappnow.com.br/api/produtosIndex',
         dataType: "json",
-        data: { 'idComprador': ID_COMPRADOR },
+        data: { 
+                'idComprador': ID_COMPRADOR,
+                'precoMin': 0,
+                'precoMax': 99999999
+              },
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
@@ -423,7 +427,7 @@ function pesquisar() {
                     appendPromocao('#listPromocao', data.response.sucesso.message.produtos);
                 } else if (pagina == 'produto') {
                     $('#listProduto').empty();
-                    $('#btn-mais-produto').css('display', 'none');
+                    $('#btn-mais-produto').css('display', 'none');                    
                     appendProduto('#listProduto', data.response.sucesso.message.produtos);
                 }
             }
